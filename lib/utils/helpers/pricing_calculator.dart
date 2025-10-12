@@ -29,6 +29,4 @@ class RPricingCalculator {
     // Lookup shipping cost for given location from shipping API or db and return it
     return 5.0; // Example shipping cost
   }
-
-
 }

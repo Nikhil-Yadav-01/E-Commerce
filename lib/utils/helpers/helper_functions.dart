@@ -25,6 +25,7 @@ class RHelperFunctions {
     } else if (value == 'Grey') {
       return Colors.grey;
     }
+    return null;
   }
 
   static void showSnackBar(String message) {
