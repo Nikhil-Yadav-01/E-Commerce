@@ -53,7 +53,7 @@ class RDeviceUtility {
     return kBottomNavigationBarHeight;
   }
 
-  static double getAppBarHeight(AppBar appBar) {
+  static double getAppBarHeight() {
     return kToolbarHeight;
   }
 

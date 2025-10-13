@@ -1,17 +1,19 @@
 class RImageStrings {
   RImageStrings._();
 
-  static const String darkAppLogo = 'assets/logos/dark_app_logo.png';
-  static const String lightAppLogo = 'assets/logos/light_app_logo.png';
   static const String google = 'assets/logos/google.png';
   static const String facebook = 'assets/logos/facebook.png';
 
   /// Illustrations
-  static const String onboardingExplore =
-      'assets/images/onboarding_explore.png';
-  static const String onboardingDeals = 'assets/images/onboarding_deals.png';
+  static const String onboardingSearching =
+      'assets/images/on_boarding_images/on-boarding-image-1.png';
+  static const String onboardingShopping =
+      'assets/images/on_boarding_images/on-boarding-image-1.png';
+  static const String onboardingDelivery =
+      'assets/images/on_boarding_images/on-boarding-image-1.png';
   static const String onboardingCheckout =
       'assets/images/onboarding_checkout.png';
+
   static const String emptyCart = 'assets/images/empty_cart.png';
   static const String emptyWishlist = 'assets/images/empty_wishlist.png';
   static const String emptyOrders = 'assets/images/empty_orders.png';
@@ -35,8 +37,8 @@ class RImageStrings {
       'assets/images/placeholder_product_wide.png';
 
   /// Logos & avatars
-  static const String appLogoLight = 'assets/logos/app_logo_light.png';
-  static const String appLogoDark = 'assets/logos/app_logo_dark.png';
+  static const String appLogoLight = 'assets/logos/logo.png';
+  static const String appLogoDark = 'assets/logos/logo.png';
   static const String partnerStripe = 'assets/logos/partner_stripe.png';
   static const String partnerGooglePay = 'assets/logos/partner_google_pay.png';
   static const String partnerApplePay = 'assets/logos/partner_apple_pay.png';
