@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/sizes.dart';
+
 class RAppBarTheme {
   RAppBarTheme._();
 
   static final AppBarTheme lightAppBarTheme = AppBarTheme(
     elevation: 0,
-    centerTitle: true,
-    backgroundColor: Colors.white,
-    foregroundColor: Colors.black,
-    surfaceTintColor: Colors.white,
+    centerTitle: false,
+    backgroundColor: Colors.transparent,
+    surfaceTintColor: Colors.transparent,
     iconTheme: const IconThemeData(
       color: Colors.black,
+      size: RSizes.iconSizeM
+    ),
+    actionsIconTheme: const IconThemeData(
+      color: Colors.black,
+      size: RSizes.iconSizeM
     ),
     titleTextStyle: const TextStyle(
       fontSize: 18.0,
@@ -21,13 +27,17 @@ class RAppBarTheme {
 
   static final AppBarTheme darkAppBarTheme = AppBarTheme(
     elevation: 0,
-    centerTitle: true,
-    backgroundColor: Colors.black,
-    foregroundColor: Colors.white,
-    surfaceTintColor: Colors.black,
-    iconTheme: const IconThemeData(
+      centerTitle: false,
+      backgroundColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+      iconTheme: const IconThemeData(
       color: Colors.white,
-    ),
+          size: RSizes.iconSizeM
+      ),
+      actionsIconTheme: const IconThemeData(
+      color: Colors.white,
+          size: RSizes.iconSizeM
+      ),
     titleTextStyle: const TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
