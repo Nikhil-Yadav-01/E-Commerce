@@ -36,6 +36,8 @@ class RTexts {
   static const String signUpButton = 'Create account';
   static const String continueWithGoogle = 'Continue with Google';
   static const String continueWithApple = 'Continue with Apple';
+  static const String orSignInWith = "Or Sign In with";
+
 
   /// Home screen copy
   static const String homeFeaturedCollections = 'Featured Collections';
@@ -287,5 +289,13 @@ class RTexts {
   // -- Dashboard 1
   static const String popularProducts = "Popular Products";
   static const String homeAppbarTitle = "Good day for shopping";
+
+  static var firstName = "First name";
+
+  static var lastName = "Last name";
+
+  static String changeYourPasswordTitle = "Change your password";
+
+  static String changeYourPasswordSubTitle = "Enter your new password";
 
 }

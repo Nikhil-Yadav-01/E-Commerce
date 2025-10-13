@@ -1,0 +1,76 @@
+// Custom TextField Widget for Sign Up
+import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+
+class RTextField extends StatefulWidget {
+  final IconData prefixIcon;
+  final String hintText;
+  final bool isPassword;
+  final bool isDark;
+
+  const RTextField({
+    super.key,
+    required this.prefixIcon,
+    required this.hintText,
+    this.isPassword = false,
+    required this.isDark,
+  });
+
+  @override
+  State<RTextField> createState() => _RTextFieldState();
+}
+
+class _RTextFieldState extends State<RTextField> {
+  bool _obscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: widget.isDark ? Colors.grey[800]! : Colors.grey[300]!,
+          width: 1,
+        ),
+      ),
+      child: TextField(
+        obscureText: widget.isPassword && _obscureText,
+        style: TextStyle(
+          color: widget.isDark ? Colors.white : Colors.black,
+          fontSize: 14,
+        ),
+        decoration: InputDecoration(
+          hintText: widget.hintText,
+          hintStyle: TextStyle(
+            color: widget.isDark ? Colors.grey[500] : Colors.grey[500],
+            fontSize: 14,
+          ),
+          prefixIcon: Icon(
+            widget.prefixIcon,
+            color: widget.isDark ? Colors.grey[500] : Colors.grey[500],
+            size: 20,
+          ),
+          suffixIcon: widget.isPassword
+              ? IconButton(
+            onPressed: () {
+              setState(() {
+                _obscureText = !_obscureText;
+              });
+            },
+            icon: Icon(
+              _obscureText ? Iconsax.eye_slash : Iconsax.eye,
+              color: widget.isDark ? Colors.grey[500] : Colors.grey[500],
+              size: 20,
+            ),
+          )
+              : null,
+          border: InputBorder.none,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 16,
+          ),
+        ),
+      ),
+    );
+  }
+}
