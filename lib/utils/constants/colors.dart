@@ -4,11 +4,16 @@ class RColors {
   RColors._();
 
   /// Brand identity colors
-  static const Color primary = Color(0xFF0057FF);
-  static const Color secondary = Color(0xFFFF6B00);
-  static const Color tertiary = Color(0xFF8F00FF);
-  static const Color accent = Color(0xFFFFC13D);
+  static const Color primaryLight = Color(0xFF0057FF);
+  static const Color secondaryLight = Color(0xFFFF6B00);
+  static const Color tertiaryLight = Color(0xFF8F00FF);
+  static const Color accentLight = Color(0xFFFFC13D);
   static const Color brandHighlight = Color(0xFF00C6FF);
+
+  static const Color primaryDark = Color(0xFF0038B8);
+  static const Color secondaryDark = Color(0xFFB84A00);
+  static const Color tertiaryDark = Color(0xFF6200B2);
+  static const Color accentDark = Color(0xFFB28629);
 
   /// Functional feedback colors
   static const Color success = Color(0xFF19C463);
@@ -37,15 +42,12 @@ class RColors {
   static const Color disabledDark = Color(0xFF3B4257);
 
   /// Text colors
-  static const Color textPrimaryLight = Color(0xFF101828);
-  static const Color textSecondaryLight = Color(0xFF475467);
-  static const Color textMutedLight = Color(0xFF8A94B0);
-  static const Color textPrimaryDark = Color(0xFFF5F7FF);
-  static const Color textSecondaryDark = Color(0xFFB8C1FF);
-  static const Color textMutedDark = Color(0xFF7D86A8);
-  static const Color onPrimary = Color(0xFFFFFFFF);
-  static const Color onSecondary = Color(0xFF1B1F2F);
-  static const Color onAccent = Color(0xFF1F2435);
+  static const Color onPrimaryLight = Color(0xFF101828);
+  static const Color onSecondaryLight = Color(0xFF475467);
+  static const Color onMutedLight = Color(0xFF8A94B0);
+  static const Color onPrimaryDark = Color(0xFFF5F7FF);
+  static const Color onSecondaryDark = Color(0xFFB8C1FF);
+  static const Color onMutedDark = Color(0xFF7D86A8);
 
   /// Utility and state colors
   static const Color focusColor = Color(0xFF00C6FF);

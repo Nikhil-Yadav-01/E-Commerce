@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
@@ -16,7 +17,7 @@ class StoreScreen extends StatelessWidget {
         title: Text(
           'Store',
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: isDark ? Colors.white : Colors.black,
+            color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
           ),
         ),
         actions: [
@@ -24,7 +25,7 @@ class StoreScreen extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Iconsax.shopping_cart,
-              color: isDark ? Colors.white : Colors.black,
+              color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
             ),
           ),
         ],
@@ -39,16 +40,16 @@ class StoreScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 decoration: BoxDecoration(
-                  color: isDark ? Colors.grey[800] : Colors.grey[100],
+                  color: isDark ? RColors.cardDark : RColors.cardLight,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
                   children: [
-                    Icon(Iconsax.search_normal, color: Colors.grey[500]),
+                    Icon(Iconsax.search_normal, color: isDark ? RColors.onMutedDark : RColors.onMutedLight),
                     const SizedBox(width: 8),
                     Text(
                       'Search Products',
-                      style: TextStyle(color: Colors.grey[500]),
+                      style: TextStyle(color: isDark ? RColors.onMutedDark : RColors.onMutedLight),
                     ),
                   ],
                 ),
@@ -73,7 +74,7 @@ class StoreScreen extends StatelessWidget {
                   return Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: isDark ? Colors.grey[800] : Colors.grey[100],
+                      color: isDark ? RColors.cardDark : RColors.cardLight,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -82,7 +83,7 @@ class StoreScreen extends StatelessWidget {
                         Icon(
                           Iconsax.shop,
                           size: 40,
-                          color: Colors.blue,
+                          color: RColors.primaryLight,
                         ),
                         const SizedBox(height: 8),
                         Text(

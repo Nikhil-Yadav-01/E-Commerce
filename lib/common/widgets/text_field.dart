@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../utils/constants/colors.dart';
+
 class RTextField extends StatefulWidget {
   final IconData prefixIcon;
   final String hintText;
@@ -29,25 +31,25 @@ class _RTextFieldState extends State<RTextField> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: widget.isDark ? Colors.grey[800]! : Colors.grey[300]!,
+          color: widget.isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight,
           width: 1,
         ),
       ),
       child: TextField(
         obscureText: widget.isPassword && _obscureText,
         style: TextStyle(
-          color: widget.isDark ? Colors.white : Colors.black,
+          color: widget.isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
           fontSize: 14,
         ),
         decoration: InputDecoration(
           hintText: widget.hintText,
           hintStyle: TextStyle(
-            color: widget.isDark ? Colors.grey[500] : Colors.grey[500],
+            color: widget.isDark ? RColors.onMutedDark : RColors.onMutedLight,
             fontSize: 14,
           ),
           prefixIcon: Icon(
             widget.prefixIcon,
-            color: widget.isDark ? Colors.grey[500] : Colors.grey[500],
+            color: widget.isDark ? RColors.onMutedDark : RColors.onMutedLight,
             size: 20,
           ),
           suffixIcon: widget.isPassword
@@ -59,7 +61,7 @@ class _RTextFieldState extends State<RTextField> {
             },
             icon: Icon(
               _obscureText ? Iconsax.eye_slash : Iconsax.eye,
-              color: widget.isDark ? Colors.grey[500] : Colors.grey[500],
+              color: widget.isDark ? RColors.onMutedDark : RColors.onMutedLight,
               size: 20,
             ),
           )

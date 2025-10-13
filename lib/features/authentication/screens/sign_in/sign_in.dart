@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/styles/spacing_styles.dart';
 import 'package:e_commerce/utils/helpers/helper_functions.dart';
+import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/images.dart';
@@ -18,7 +19,7 @@ class SignInScreen extends StatelessWidget {
     final isDark = RHelperFunctions.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? const Color(0xFF0F0F0F) : Colors.white,
+      backgroundColor: isDark ? RColors.backgroundDark : RColors.backgroundLight,
       // Stack to layer the custom background shape and the main content
       body: SingleChildScrollView(
         child: Padding(

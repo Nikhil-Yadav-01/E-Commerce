@@ -14,6 +14,11 @@ class RSizes {
   static const double spaceBtwItems = 16;
   static const double spaceBtwSections = 32;
 
+  static const double cardRadiusSm = 8;
+  static const double cardRadiusMd = 12;
+  static const double cardRadiusLg = 16;
+  static const double cardRadiusXl = 24;
+  static const double cardRadiusXxl = 32;
 
   /// Component corner radius values
   static const double radiusMicro = 4;

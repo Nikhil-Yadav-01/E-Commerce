@@ -1,4 +1,6 @@
 import 'package:e_commerce/common/styles/spacing_styles.dart';
+import 'package:e_commerce/utils/constants/colors.dart';
+import 'package:e_commerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/sizes.dart';
@@ -19,7 +21,10 @@ class SuccessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = RHelperFunctions.isDarkMode(context);
+    
     return Scaffold(
+      backgroundColor: isDark ? RColors.backgroundDark : RColors.backgroundLight,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(RSizes.defaultSpace),

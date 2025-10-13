@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
@@ -16,7 +17,7 @@ class WishlistScreen extends StatelessWidget {
         title: Text(
           'Wishlist',
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: isDark ? Colors.white : Colors.black,
+            color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
           ),
         ),
         actions: [
@@ -24,7 +25,7 @@ class WishlistScreen extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Iconsax.add,
-              color: isDark ? Colors.white : Colors.black,
+              color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
             ),
           ),
         ],
@@ -49,7 +50,7 @@ class WishlistScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
-                      color: isDark ? Colors.grey[800] : Colors.grey[100],
+                      color: isDark ? RColors.cardDark : RColors.cardLight,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -59,7 +60,7 @@ class WishlistScreen extends StatelessWidget {
                           child: Container(
                             margin: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: isDark ? Colors.grey[700] : Colors.grey[200],
+                              color: isDark ? RColors.surfaceDark : RColors.dividerLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Center(
@@ -85,7 +86,7 @@ class WishlistScreen extends StatelessWidget {
                                 Text(
                                   '\$${(index + 1) * 25}',
                                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    color: Colors.blue,
+                                    color: RColors.primaryLight,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
@@ -16,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
         title: Text(
           'Profile',
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: isDark ? Colors.white : Colors.black,
+            color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
           ),
         ),
         actions: [
@@ -24,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Iconsax.edit,
-              color: isDark ? Colors.white : Colors.black,
+              color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
             ),
           ),
         ],
@@ -38,11 +39,11 @@ class ProfileScreen extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 50,
-                backgroundColor: isDark ? Colors.grey[800] : Colors.grey[200],
+                backgroundColor: isDark ? RColors.cardDark : RColors.cardLight,
                 child: Icon(
                   Iconsax.user,
                   size: 50,
-                  color: Colors.grey[500],
+                  color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
                 ),
               ),
               const SizedBox(height: RSizes.spaceBtwItems),
@@ -53,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
               Text(
                 'john.doe@example.com',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.grey[500],
+                  color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
                 ),
               ),
               const SizedBox(height: RSizes.spaceBtwSections),
@@ -117,14 +118,14 @@ class ProfileScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Colors.grey[800] : Colors.grey[100],
+        color: isDark ? RColors.cardDark : RColors.cardLight,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         children: [
           Icon(
             icon,
-            color: Colors.blue,
+            color: RColors.primaryLight,
             size: 24,
           ),
           const SizedBox(width: 16),
@@ -139,7 +140,7 @@ class ProfileScreen extends StatelessWidget {
                 Text(
                   subtitle,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Colors.grey[500],
+                    color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
                   ),
                 ),
               ],
@@ -147,7 +148,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           Icon(
             Iconsax.arrow_right_3,
-            color: Colors.grey[500],
+            color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
             size: 16,
           ),
         ],

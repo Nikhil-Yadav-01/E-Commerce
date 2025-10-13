@@ -1,3 +1,4 @@
+import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:e_commerce/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:e_commerce/utils/theme/custom_themes/checkbox_theme.dart';
@@ -16,7 +17,7 @@ class RAppTheme {
     fontFamily: 'Poppins',
     brightness: Brightness.light,
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: RColors.backgroundLight,
     appBarTheme: RAppBarTheme.lightAppBarTheme,
     bottomSheetTheme: RBottomSheetTheme.lightBottomSheetTheme,
     inputDecorationTheme: RTextFieldTheme.lightInputDecorationTheme,
@@ -31,7 +32,7 @@ class RAppTheme {
     fontFamily: 'Poppins',
     brightness: Brightness.dark,
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: RColors.backgroundDark,
     appBarTheme: RAppBarTheme.darkAppBarTheme,
     bottomSheetTheme: RBottomSheetTheme.darkBottomSheetTheme,
     inputDecorationTheme: RTextFieldTheme.darkInputDecorationTheme,
