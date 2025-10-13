@@ -1,5 +1,5 @@
 
-import 'package:e_commerce/features/authentication/screens/sign_in.dart';
+import 'package:e_commerce/features/authentication/screens/sign_in/sign_in.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

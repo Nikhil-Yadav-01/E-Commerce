@@ -35,12 +35,10 @@ class RSizes {
   static const double bannerHeight = 160;
 
   /// Icon sizes
-  static const double iconSizeXS = 16;
-  static const double iconSizeS = 20;
-  static const double iconSizeM = 24;
-  static const double iconSizeL = 32;
-  static const double iconSizeXL = 40;
-  static const double iconSizeXXL = 48;
+  static const double iconSizeS = 24;
+  static const double iconSizeM = 32;
+  static const double iconSizeL = 48;
+  static const double iconSizeXL = 72;
 
   /// Typography scale
   static const double fontSizeXS = 12;
