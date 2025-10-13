@@ -110,4 +110,6 @@ class RColors {
     Color(0xFFFF4C61),
     Color(0xFF8F00FF),
   ];
+
+  static const Color white = Color(0xFFFFFFFF);
 }
