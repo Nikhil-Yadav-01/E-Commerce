@@ -43,7 +43,7 @@ class OnBoardingScreen extends StatelessWidget {
           ),
 
           // Skip Button
-          OnBoardingSkip(),
+          if (controller.currentPageIndex.value < 2) OnBoardingSkip(),
 
           // Dot Navigation SmoothPageIndicator
           OnBoardingDotNavigation(),

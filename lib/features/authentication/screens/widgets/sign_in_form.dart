@@ -1,4 +1,5 @@
 import 'package:e_commerce/features/authentication/screens/password_config/forget_password.dart';
+import 'package:e_commerce/navigation_menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -67,9 +68,7 @@ class SignInForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  // Handle login logic
-                },
+                onPressed: () => Get.to(() => NavigationMenu()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
