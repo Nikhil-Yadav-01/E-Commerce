@@ -1,7 +1,8 @@
+import 'package:e_commerce/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'features/authentication/screens/sign_in/sign_in.dart';
+import 'navigation_menu.dart';
 import 'utils/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: RAppTheme.lightTheme,
       darkTheme: RAppTheme.darkTheme,
-      home: const SignInScreen(),
+      home: const OnBoardingScreen(),
     );
   }
 }
