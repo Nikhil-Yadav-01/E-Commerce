@@ -11,8 +11,8 @@ class RSizes {
   static const double xxxl = 40;
 
   static const double defaultSpace = 24;
-  static const double defaultBtwItems = 16;
-  static const double defaultBtwSections = 32;
+  static const double spaceBtwItems = 16;
+  static const double spaceBtwSections = 32;
 
 
   /// Component corner radius values
@@ -29,7 +29,7 @@ class RSizes {
   static const double buttonWidth = 120;
   static const double buttonElevation = 4;
   static const double inputHeight = 56;
-  static const double topBarHeight = 72;
+  static const double appBarHeight = 72;
   static const double bottomNavigationHeight = 72;
   static const double productCardHeight = 240;
   static const double bannerHeight = 160;
