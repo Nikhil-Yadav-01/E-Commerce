@@ -43,7 +43,7 @@ class OnBoardingScreen extends StatelessWidget {
           ),
 
           // Skip Button
-          if (controller.currentPageIndex.value < 2) OnBoardingSkip(),
+          Obx(() => controller.currentPageIndex.value < 2 ? const OnBoardingSkip() : const SizedBox.shrink()),
 
           // Dot Navigation SmoothPageIndicator
           OnBoardingDotNavigation(),

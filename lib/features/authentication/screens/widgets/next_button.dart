@@ -14,7 +14,7 @@ class OnBoardingNextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: RSizes.defaultSpace,
-      right: RDeviceUtility.getNavigationBarHeight(context),
+      right: RDeviceUtils.getNavigationBarHeight(context),
       child: ElevatedButton(
         onPressed: () => OnBoardingController.instance.nextPage(),
         style: ElevatedButton.styleFrom(
