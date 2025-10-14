@@ -8,6 +8,7 @@ import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/grid_layout_widget.dart';
 import '../../../../common/widgets/search_container.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
@@ -36,7 +37,6 @@ class HomeScreen extends StatelessWidget {
 
                   // Heading
                   RSectionHeading(
-                    textColor: RColors.white,
                     title: 'Popular Categories',
                   ),
                   const SizedBox(height: RSizes.spaceBtwItems),
@@ -63,19 +63,9 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: RSizes.spaceBtwSections),
 
                   // Popular Products
-                  GridView.builder(
+                  GridLayoutWidget(
                     itemCount: 6,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: RSizes.gridViewSpacing,
-                      mainAxisSpacing: RSizes.gridViewSpacing,
-                      mainAxisExtent: 288,
-                    ),
-                    itemBuilder: (_, index) => ProductCardVertical(
-
-                    ),
+                    itemBuilder: (context, index) => const ProductCardVertical(),
                   ),
                 ],
               )

@@ -18,7 +18,11 @@ class RCartCounterIcon extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {},
-          icon: const Icon(Iconsax.notification),
+          icon: Icon(
+            Iconsax.notification,
+            color: iconColor,
+            size: RSizes.iconSizeS,
+          ),
         ),
         Positioned(
           right: 0,

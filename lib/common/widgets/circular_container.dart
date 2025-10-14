@@ -1,37 +1,44 @@
 import 'package:flutter/material.dart';
-
 import '../../utils/constants/colors.dart';
 
 class RoundedContainer extends StatelessWidget {
   const RoundedContainer({
     super.key,
     this.child,
-    this.width = 400,
-    this.height = 400,
-    this.radius = 400,
+    this.width,
     this.margin,
-    this.padding = 8,
-    this.backgroundColor = RColors.white,
+    this.backgroundColor,
+    this.height,
+    this.radius = 12,
+    this.clip = true,
+    this.padding = const EdgeInsets.all(8),
   });
 
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final double radius;
   final EdgeInsets? margin;
-  final double padding;
+  final EdgeInsets padding;
   final Widget? child;
-  final Color backgroundColor;
+  final Color? backgroundColor; // now optional, can fallback to theme
+  final bool clip; // allow optional clipping
 
   @override
   Widget build(BuildContext context) {
+    final Color bgColor = backgroundColor ?? Theme.of(context).cardColor;
+
     return Container(
-      width: width,
-      height: height,
+      width: width,  // flexible
+      height: height, // flexible
       margin: margin,
-      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
-        color: backgroundColor,
+        color: bgColor,
+      ),
+      clipBehavior: clip ? Clip.hardEdge : Clip.none,
+      child: Padding(
+        padding: padding,
+        child: child,
       ),
     );
   }

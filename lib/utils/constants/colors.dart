@@ -45,9 +45,12 @@ class RColors {
   static const Color onPrimaryLight = Color(0xFF101828);
   static const Color onSecondaryLight = Color(0xFF475467);
   static const Color onMutedLight = Color(0xFF8A94B0);
+  static const Color onBackgroundDark = Color(0xFFF5F7FF);
   static const Color onPrimaryDark = Color(0xFFF5F7FF);
   static const Color onSecondaryDark = Color(0xFFB8C1FF);
   static const Color onMutedDark = Color(0xFF7D86A8);
+  static const Color onBackgroundLight = Color(0xFF101828);
+
 
   /// Utility and state colors
   static const Color focusColor = Color(0xFF00C6FF);
@@ -114,4 +117,6 @@ class RColors {
   ];
 
   static const Color white = Color(0xFFFFFFFF);
+  static const Color iconLight = Color(0xFF1F1E1E); // Dark gray for light theme
+  static const Color iconDark = Color(0xFFCCCCCC);  // Light gray for dark theme
 }
