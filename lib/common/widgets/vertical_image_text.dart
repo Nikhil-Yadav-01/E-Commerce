@@ -5,13 +5,14 @@ import '../../utils/constants/sizes.dart';
 
 class VerticalImageText extends StatelessWidget {
   const VerticalImageText({
-    super.key, required this.image, required this.title, required this.textColor, required this.backgroundColor, this.onTap,
+    super.key, required this.image, required this.title, required this.textColor, required this.backgroundColor, this.itemSize = 56.0, this.onTap,
   });
 
   final String image;
   final String title;
   final Color textColor;
   final Color backgroundColor;
+  final double itemSize;
   final void Function()? onTap;
 
   @override
@@ -23,16 +24,16 @@ class VerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 56,
-              height: 56,
+              width: itemSize,
+              height: itemSize,
               decoration: BoxDecoration(
                 color: backgroundColor,
                 borderRadius: BorderRadius.circular(100),
               ),
               child: Center(
                 child: Image(
-                  width: RSizes.iconSizeM,
-                  height: RSizes.iconSizeM,
+                  width: itemSize * 0.5,
+                  height: itemSize * 0.5,
                   image: AssetImage(image),
                   fit: BoxFit.contain,
                   color: RColors.surfaceLight,
@@ -42,9 +43,11 @@ class VerticalImageText extends StatelessWidget {
 
             const SizedBox(height: RSizes.spaceBtwItems / 2),
             SizedBox(
-              width: 56,
+              width: itemSize + 10,
               child: Text(
                 title,
+                textAlign: TextAlign.center,
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.labelSmall?.apply(
                     color: textColor

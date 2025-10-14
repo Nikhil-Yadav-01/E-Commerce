@@ -1,100 +1,96 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:e_commerce/utils/constants/images.dart';
 
+import '../../../../common/widgets/cart_menu_icon.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import 'widgets/featured_brands_section.dart';
+import 'widgets/store_search_bar.dart';
+// remove old StoreTabContent import if you will replace it with the example below
+import 'widgets/store_tab_content.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = RHelperFunctions.isDarkMode(context);
+    final bool isDark = RHelperFunctions.isDarkMode(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Store',
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Store',
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
+          actions: [
+            RCartCounterIcon(iconColor: isDark ? RColors.white : Colors.black),
+          ],
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Iconsax.shopping_cart,
-              color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
-            ),
-          ),
-        ],
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(RSizes.defaultSpace),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                decoration: BoxDecoration(
-                  color: isDark ? RColors.cardDark : RColors.cardLight,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Iconsax.search_normal, color: isDark ? RColors.onMutedDark : RColors.onMutedLight),
-                    const SizedBox(width: 8),
-                    Text(
-                      'Search Products',
-                      style: TextStyle(color: isDark ? RColors.onMutedDark : RColors.onMutedLight),
+        body: NestedScrollView(
+          key: const PageStorageKey('StoreNestedScroll'),
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            // Use SliverOverlapAbsorber so tabs' scroll views can inject overlap
+            return <Widget>[
+              SliverOverlapAbsorber(
+                // This handle must be the same one used by SliverOverlapInjector inside each tab
+                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)!,
+                sliver: SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  pinned: true, // pin TabBar so it's always visible when collapsed
+                  floating: false,
+                  snap: false,
+                  forceElevated: innerBoxIsScrolled,
+                  backgroundColor: isDark ? RColors.backgroundDark : RColors.backgroundLight,
+                  expandedHeight: 440,
+                  flexibleSpace: FlexibleSpaceBar(
+                    background: Container(
+                      color: isDark ? RColors.backgroundDark : RColors.backgroundLight,
+                      // Avoid nested scrollables here. Use Column (fixed content).
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const [
+                          StoreSearchBar(),
+                          SizedBox(height: RSizes.spaceBtwSections),
+                          FeaturedBrandsSection(),
+                          // add spacing to match the expandedHeight if needed
+                        ],
+                      ),
                     ),
-                  ],
+                  ),
+                  bottom: PreferredSize(
+                    preferredSize: const Size.fromHeight(48),
+                    child: Container(
+                      color: isDark ? RColors.backgroundDark : RColors.backgroundLight,
+                      child: TabBar(
+                        isScrollable: true,
+                        indicatorColor: RColors.primaryLight,
+                        labelColor: isDark ? RColors.white : RColors.onPrimaryLight,
+                        unselectedLabelColor: isDark ? RColors.onMutedDark : RColors.onMutedLight,
+                        tabs: const [
+                          Tab(child: Text('Sports')),
+                          Tab(child: Text('Furniture')),
+                          Tab(child: Text('Electronics')),
+                          Tab(child: Text('Clothes')),
+                          Tab(child: Text('Cosmetics')),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: RSizes.spaceBtwSections),
-              Text(
-                'Featured Brands',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              const SizedBox(height: RSizes.spaceBtwItems),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 1.2,
-                ),
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: isDark ? RColors.cardDark : RColors.cardLight,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Iconsax.shop,
-                          size: 40,
-                          color: RColors.primaryLight,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Brand ${index + 1}',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+            ];
+          },
+          body: TabBarView(
+            // IMPORTANT: each child must be a scrollable that uses a SliverOverlapInjector
+            children: const [
+              CategoryTabContent(tabKey: 'sports'),
+              CategoryTabContent(tabKey: 'furniture'),
+              CategoryTabContent(tabKey: 'electronics'),
+              CategoryTabContent(tabKey: 'clothes'),
+              CategoryTabContent(tabKey: 'cosmetics'),
             ],
           ),
         ),
