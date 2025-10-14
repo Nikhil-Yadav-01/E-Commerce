@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../utils/constants/texts.dart';
 
 class OrSign extends StatelessWidget {
   const OrSign({

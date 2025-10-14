@@ -1,11 +1,7 @@
-import 'package:e_commerce/common/widgets/text_field.dart';
 import 'package:e_commerce/features/authentication/screens/password_config/reset_password.dart';
-import 'package:e_commerce/features/authentication/screens/sign_in/sign_in.dart';
-import 'package:e_commerce/features/authentication/screens/sign_up/succes_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../utils/constants/images.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/texts.dart';
 import '../../../../utils/helpers/helper_functions.dart';

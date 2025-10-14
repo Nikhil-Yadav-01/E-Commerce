@@ -1,7 +1,5 @@
 import 'package:e_commerce/features/authentication/screens/sign_in/sign_in.dart';
-import 'package:e_commerce/features/authentication/screens/sign_up/succes_screen.dart';
 import 'package:e_commerce/navigation_menu.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

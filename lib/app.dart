@@ -2,7 +2,6 @@ import 'package:e_commerce/features/authentication/screens/onboarding/onboarding
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'navigation_menu.dart';
 import 'utils/theme/theme.dart';
 
 class App extends StatelessWidget {
