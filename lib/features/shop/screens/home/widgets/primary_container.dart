@@ -27,14 +27,14 @@ class HomePrimaryContainer extends StatelessWidget {
               Positioned(
                 top: -150,
                 right: -250,
-                child: RCircularContainer(
+                child: RoundedContainer(
                   backgroundColor: RColors.white.withValues(alpha: 0.1),
                 ),
               ),
               Positioned(
                 top: 100,
                 right: -300,
-                child: RCircularContainer(
+                child: RoundedContainer(
                   backgroundColor: RColors.white.withValues(alpha: 0.1),
                 ),
               ),
