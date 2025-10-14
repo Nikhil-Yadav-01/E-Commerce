@@ -14,6 +14,7 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = RHelperFunctions.isDarkMode(context);
+
     return RAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,13 +22,13 @@ class HomeAppBar extends StatelessWidget {
           Text(
             RTexts.homeAppbarTitle,
             style: Theme.of(context).textTheme.labelMedium?.apply(
-              color: RColors.white,
+              color: isDark ? RColors.onSecondaryDark: RColors.onPrimaryLight,
             ),
           ),
           Text(
             name,
             style: Theme.of(context).textTheme.headlineMedium?.apply(
-              color: RColors.white,
+              color: isDark ? RColors.onSecondaryDark: RColors.onPrimaryLight,
             ),
           ),
         ],

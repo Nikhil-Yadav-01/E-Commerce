@@ -4,6 +4,7 @@ import '../../../../../common/widgets/vertical_image_text.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
+import '../../../../../utils/device/device_utility.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -13,7 +14,7 @@ class Categories extends StatelessWidget {
     bool isDark = RHelperFunctions.isDarkMode(context);
 
     return SizedBox(
-      height: 90,
+      height: RDeviceUtils.getCategoryHeight(context),
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: 8,
@@ -24,6 +25,7 @@ class Categories extends StatelessWidget {
             title: 'Cosmetics',
             backgroundColor: isDark ? RColors.secondaryDark : RColors.secondaryLight,
             textColor: isDark ? RColors.onSecondaryDark : RColors.onSecondaryLight,
+            itemSize: RDeviceUtils.getCategoryItemSize(context),
             onTap: () {},
           );
         },

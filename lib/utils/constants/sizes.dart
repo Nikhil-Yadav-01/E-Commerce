@@ -60,4 +60,6 @@ class RSizes {
   static const double animationFast = 150;
   static const double animationMedium = 250;
   static const double animationSlow = 400;
+
+  static const double gridViewSpacing = 16;
 }

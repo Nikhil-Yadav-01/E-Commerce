@@ -26,7 +26,7 @@ class SearchContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: RSizes.defaultSpace),
       child: Container(
-        width: RDeviceUtility.getScreenWidth(context),
+        width: RDeviceUtils.getScreenWidth(context),
         padding: EdgeInsets.all(RSizes.md),
         decoration: BoxDecoration(
           color: showBackground

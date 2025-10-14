@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class RDeviceUtility {
+class RDeviceUtils {
   static void hideKeyboard(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
@@ -116,5 +116,24 @@ class RDeviceUtility {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  static double getCarouselHeight(BuildContext context) {
+    final screenHeight = getScreenHeight(context);
+    final orientation = MediaQuery.of(context).orientation;
+    final height = orientation == Orientation.landscape 
+        ? screenHeight * 0.4 
+        : screenHeight * 0.25;
+    return height.clamp(150.0, 300.0);
+  }
+
+  static double getCategoryHeight(BuildContext context) {
+    return 110.0;
+  }
+
+  static double getCategoryItemSize(BuildContext context) {
+    final screenWidth = getScreenWidth(context);
+    final size = screenWidth < 600 ? 60.0 : screenWidth > 1200 ? 80.0 : 70.0;
+    return size;
   }
 }

@@ -14,7 +14,7 @@ class OnBoardingDotNavigation extends StatelessWidget {
     final controller = OnBoardingController.instance;
 
     return Positioned(
-        bottom: RDeviceUtility.getNavigationBarHeight(context) + 25,
+        bottom: RDeviceUtils.getNavigationBarHeight(context) + 25,
         left: RSizes.defaultSpace,
         child: SmoothPageIndicator(
           controller: controller.pageController,

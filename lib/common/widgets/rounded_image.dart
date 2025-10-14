@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/constants/colors.dart';
-import '../../utils/constants/images.dart';
 import '../../utils/constants/sizes.dart';
 
 class RoundedImage extends StatelessWidget {
@@ -52,7 +51,7 @@ class RoundedImage extends StatelessWidget {
             fit: fit,
             image: isNetworkImage
                 ? NetworkImage(imageUrl)
-                : AssetImage(RImages.promoBanner1) as ImageProvider,
+                : AssetImage(imageUrl) as ImageProvider,
           ),
         ),
       ),
