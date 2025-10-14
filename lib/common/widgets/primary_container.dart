@@ -1,27 +1,27 @@
+import 'package:e_commerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../common/widgets/circular_container.dart';
-import '../../../../../common/widgets/curved_edges_widget.dart';
-import '../../../../../utils/constants/colors.dart';
+import 'circular_container.dart';
+import 'curved_edges_widget.dart';
+import '../../utils/constants/colors.dart';
 
-class HomePrimaryContainer extends StatelessWidget {
-  const HomePrimaryContainer({
+class RPrimaryContainer extends StatelessWidget {
+  const RPrimaryContainer({
     super.key,
-    required this.isDark,
     required this.child,
   });
 
-  final bool isDark;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = RHelperFunctions.isDarkMode(context);
+
     return RCurvedEdgesWidget(
       isDark: isDark,
       child: Container(
         color: isDark ? RColors.primaryDark : RColors.primaryLight,
         child: SizedBox(
-          height: 400,
           child: Stack(
             children: [
               Positioned(

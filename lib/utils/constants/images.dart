@@ -164,6 +164,6 @@ class RImages {
   static const String productImage69 = "assets/images/products/tshirt_blue_without_collar_front.png";
 
   //Profile
-  static const String user = "assets/images/content/user.png";
+  static const String user = "assets/images/profile/user.png";
 
 }
