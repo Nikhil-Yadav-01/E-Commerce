@@ -18,29 +18,33 @@ class RPrimaryContainer extends StatelessWidget {
     final bool isDark = RHelperFunctions.isDarkMode(context);
 
     return RCurvedEdgesWidget(
-      isDark: isDark,
       child: Container(
         color: isDark ? RColors.primaryDark : RColors.primaryLight,
-        child: SizedBox(
-          child: Stack(
-            children: [
-              Positioned(
-                top: -150,
-                right: -250,
-                child: RoundedContainer(
-                  backgroundColor: RColors.white.withValues(alpha: 0.1),
-                ),
+        padding: const EdgeInsets.all(0),
+        child: Stack(
+          children: [
+            Positioned(
+              top: -150,
+              right: -250,
+              child: RoundedContainer(
+                width: 400,
+                height: 400,
+                radius: 400,
+                backgroundColor: RColors.white.withValues(alpha: 0.1),
               ),
-              Positioned(
-                top: 100,
-                right: -300,
-                child: RoundedContainer(
-                  backgroundColor: RColors.white.withValues(alpha: 0.1),
-                ),
+            ),
+            Positioned(
+              top: 100,
+              right: -300,
+              child: RoundedContainer(
+                width: 400,
+                height: 400,
+                radius: 400,
+                backgroundColor: RColors.white.withValues(alpha: 0.1),
               ),
-              child,
-            ],
-          ),
+            ),
+            child,
+          ],
         ),
       ),
     );

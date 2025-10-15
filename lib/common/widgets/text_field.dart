@@ -31,7 +31,7 @@ class _RTextFieldState extends State<RTextField> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: widget.isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight,
+          color: widget.isDark ? RColors.borderDark : RColors.borderLight,
           width: 1,
         ),
       ),

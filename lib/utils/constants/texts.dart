@@ -179,10 +179,6 @@ class RTexts {
   static const String tOnBoardingCounter2 = "2/3";
   static const String tOnBoardingCounter3 = "3/3";
 
-  // -- Welcome Screen Text
-  static const String tWelcomeTitle = "Build Awesome Apps";
-  static const String tWelcomeSubTitle = "Let's put your creativity on the development highway.";
-
   // -- Login Screen Text
   static const String tLoginTitle = "Welcome Back,";
   static const String tLoginSubTitle = "Make it work, make it right, make it fast.";
@@ -207,7 +203,6 @@ class RTexts {
   static const String resendEmail = "Resend Email";
   static const String yourAccountCreatedTitle = "Your account successfully created!";
   static const String yourAccountCreatedSubTitle = "Welcome to Your Application: Your Account is Created, Unleash the Joy of Seamless Online Experience!";
-
 
   // -- Forget Password Text
   static const String tForgetPasswordTitle = "Make Selection!";
