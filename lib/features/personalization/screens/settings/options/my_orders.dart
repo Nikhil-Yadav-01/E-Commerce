@@ -34,7 +34,7 @@ class MyOrdersScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: isDark ? RColors.cardDark : RColors.cardLight,
         borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
-        border: Border.all(color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
+        border: Border.all(color: isDark ? RColors.borderDark : RColors.borderLight),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -117,7 +117,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         color: isDark ? RColors.cardDark : RColors.cardLight,
         borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
         border: Border.all(
-          color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight,
+          color: isDark ? RColors.borderDark : RColors.borderLight,
         ),
       ),
       child: Row(

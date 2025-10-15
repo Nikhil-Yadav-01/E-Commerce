@@ -35,7 +35,7 @@ class MyCouponsScreen extends StatelessWidget {
         gradient: isActive ? RColors.primaryGradient : null,
         color: isActive ? null : (isDark ? RColors.cardDark : RColors.cardLight),
         borderRadius: BorderRadius.circular(RSizes.cardRadiusLg),
-        border: isActive ? null : Border.all(color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
+        border: isActive ? null : Border.all(color: isDark ? RColors.borderDark : RColors.borderLight),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
