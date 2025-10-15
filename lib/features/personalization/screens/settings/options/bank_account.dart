@@ -91,7 +91,7 @@ class BankAccountScreen extends StatelessWidget {
         color: isDark ? RColors.cardDark : RColors.cardLight,
         borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
         border: Border.all(
-          color: isPrimary ? RColors.primaryLight : (isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
+          color: isPrimary ? RColors.primaryLight : (isDark ? RColors.borderDark : RColors.borderLight),
           width: isPrimary ? 2 : 1,
         ),
       ),
