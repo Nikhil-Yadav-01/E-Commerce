@@ -8,7 +8,6 @@ import 'utils/constants/colors.dart';
 import 'features/shop/screens/home/home.dart';
 import 'features/shop/screens/store/store.dart';
 import 'features/shop/screens/wishlist/wishlist.dart';
-import 'features/personalization/screens/profile/profile.dart';
 import 'utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {

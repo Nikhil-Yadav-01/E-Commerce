@@ -58,6 +58,8 @@ class ProductCardVertical extends StatelessWidget {
                     color: Colors.redAccent,
                     backgroundColor: Colors.white,
                     size: 18,
+                    width: 32,
+                    height: 32,
                     shadow: true,
                     onPressed: () {},
                   ),
