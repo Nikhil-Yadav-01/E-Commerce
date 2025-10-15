@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/shop/screens/store/widgets/categories_tab_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/cart_menu_icon.dart';
@@ -61,22 +62,7 @@ class StoreScreen extends StatelessWidget {
                   ),
                   bottom: PreferredSize(
                     preferredSize: const Size.fromHeight(48),
-                    child: Container(
-                      color: isDark ? RColors.backgroundDark : RColors.backgroundLight,
-                      child: TabBar(
-                        isScrollable: true,
-                        indicatorColor: RColors.primaryLight,
-                        labelColor: isDark ? RColors.white : RColors.onPrimaryLight,
-                        unselectedLabelColor: isDark ? RColors.onMutedDark : RColors.onMutedLight,
-                        tabs: const [
-                          Tab(child: Text('Sports')),
-                          Tab(child: Text('Furniture')),
-                          Tab(child: Text('Electronics')),
-                          Tab(child: Text('Clothes')),
-                          Tab(child: Text('Cosmetics')),
-                        ],
-                      ),
-                    ),
+                    child: CategoriesTabBar(isDark: isDark),
                   ),
                 ),
               ),

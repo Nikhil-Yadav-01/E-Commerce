@@ -35,8 +35,8 @@ class SearchContainer extends StatelessWidget {
           border: showBorder
               ? Border.all(
             color: isDark
-                ? RColors.borderNeutralDark
-                : RColors.borderNeutralLight,
+                ? RColors.borderDark
+                : RColors.borderLight,
             width: 0.5,
           )
               : null,
