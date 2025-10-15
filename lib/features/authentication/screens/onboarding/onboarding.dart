@@ -49,7 +49,8 @@ class OnBoardingScreen extends StatelessWidget {
           OnBoardingDotNavigation(),
 
           // Circular Button
-          OnBoardingNextButton(),
+          Obx(() => OnBoardingNextButton(currentPage: controller.currentPageIndex.value)),
+
         ],
       ),
     );
