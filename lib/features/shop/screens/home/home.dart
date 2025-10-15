@@ -4,6 +4,7 @@ import 'package:e_commerce/features/shop/screens/home/widgets/carousel_widget.da
 import 'package:e_commerce/features/shop/screens/home/widgets/categories.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/heading_section.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_app_bar.dart';
+import 'package:e_commerce/features/shop/screens/product_details/product_detail.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: RSizes.spaceBtwSections),
+                  const SizedBox(height: RSizes.spaceBtwSections * 2),
                 ],
               ),
             ),
@@ -67,8 +68,9 @@ class HomeScreen extends StatelessWidget {
                   // Popular Products
                   GridLayoutWidget(
                     itemCount: 6,
-                    itemBuilder: (context, index) =>
-                        const ProductCardVertical(),
+                    itemBuilder: (context, index) => ProductCardVertical(
+                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProductDetail())),
+                    ),
                   ),
                 ],
               ),

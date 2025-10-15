@@ -1,3 +1,4 @@
+import 'package:e_commerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants/colors.dart';
@@ -12,7 +13,7 @@ class RoundedImage extends StatelessWidget {
     this.width = 150,
     this.height = 150,
     this.applyImageRadius = false,
-    this.backgroundColor = RColors.backgroundLight,
+    this.backgroundColor,
     this.borderRadius = RSizes.radiusMedium,
     this.fit = BoxFit.contain,
     required this.imageUrl,
@@ -23,7 +24,7 @@ class RoundedImage extends StatelessWidget {
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final double borderRadius;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
@@ -32,6 +33,8 @@ class RoundedImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = RHelperFunctions.isDarkMode(context);
+
     return GestureDetector(
       onTap: onPressed,
       child: Container(
@@ -39,9 +42,9 @@ class RoundedImage extends StatelessWidget {
         height: height,
         padding: padding,
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: backgroundColor ?? (isDark ? RColors.surfaceDark : RColors.surfaceLight),
           border: border,
-          borderRadius: BorderRadius.circular(RSizes.md),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(
           borderRadius: applyImageRadius

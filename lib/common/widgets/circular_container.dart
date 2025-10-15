@@ -1,4 +1,6 @@
+import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+
 
 class RoundedContainer extends StatelessWidget {
   const RoundedContainer({
@@ -8,9 +10,10 @@ class RoundedContainer extends StatelessWidget {
     this.margin,
     this.backgroundColor,
     this.height,
-    this.radius = 12,
+    this.radius = RSizes.cardRadiusLg,
     this.clip = true,
     this.padding = const EdgeInsets.all(8),
+    this.borderColor,
   });
 
   final double? width;
@@ -19,6 +22,8 @@ class RoundedContainer extends StatelessWidget {
   final EdgeInsets? margin;
   final EdgeInsets padding;
   final Widget? child;
+  final bool showBorder = false;
+  final Color? borderColor;
   final Color? backgroundColor; // now optional, can fallback to theme
   final bool clip; // allow optional clipping
 
@@ -31,7 +36,8 @@ class RoundedContainer extends StatelessWidget {
       height: height, // flexible
       margin: margin,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius:BorderRadius.circular(radius),
+        border: showBorder ? Border.all(color: borderColor ?? Theme.of(context).dividerColor) : null,
         color: bgColor,
       ),
       clipBehavior: clip ? Clip.hardEdge : Clip.none,
