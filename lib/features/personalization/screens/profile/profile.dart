@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import 'edit_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -14,142 +15,119 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Profile',
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
-          ),
-        ),
+        title: const Text('Profile'),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Iconsax.edit,
-              color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
-            ),
+            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EditProfileScreen())),
+            icon: const Icon(Iconsax.edit),
           ),
         ],
-        backgroundColor: Colors.transparent,
-        elevation: 0,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(RSizes.defaultSpace),
-          child: Column(
-            children: [
-              CircleAvatar(
-                radius: 50,
-                backgroundColor: isDark ? RColors.cardDark : RColors.cardLight,
-                child: Icon(
-                  Iconsax.user,
-                  size: 50,
-                  color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
-                ),
+        padding: const EdgeInsets.all(RSizes.defaultSpace),
+        child: Column(
+          children: [
+            Center(
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: RColors.primaryGradient,
+                      boxShadow: [
+                        BoxShadow(
+                          color: RColors.primaryLight.withValues(alpha: 0.3),
+                          blurRadius: 20,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
+                    ),
+                    child: const CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.transparent,
+                      child: Icon(Iconsax.user, size: 60, color: Colors.white),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      padding: const EdgeInsets.all(RSizes.xs),
+                      decoration: BoxDecoration(
+                        color: RColors.primaryLight,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: isDark ? RColors.backgroundDark : RColors.backgroundLight, width: 3),
+                      ),
+                      child: const Icon(Iconsax.camera, size: 20, color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: RSizes.spaceBtwItems),
-              Text(
-                'John Doe',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              Text(
-                'john.doe@example.com',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
-                ),
-              ),
-              const SizedBox(height: RSizes.spaceBtwSections),
-              _buildProfileOption(
-                context,
-                icon: Iconsax.user,
-                title: 'My Account',
-                subtitle: 'Make changes to your account',
-                isDark: isDark,
-              ),
-              _buildProfileOption(
-                context,
-                icon: Iconsax.shopping_bag,
-                title: 'My Orders',
-                subtitle: 'In-progress and Completed Orders',
-                isDark: isDark,
-              ),
-              _buildProfileOption(
-                context,
-                icon: Iconsax.bank,
-                title: 'Bank Account',
-                subtitle: 'Withdraw balance to registered bank account',
-                isDark: isDark,
-              ),
-              _buildProfileOption(
-                context,
-                icon: Iconsax.discount_shape,
-                title: 'My Coupons',
-                subtitle: 'List of all the discounted coupons',
-                isDark: isDark,
-              ),
-              _buildProfileOption(
-                context,
-                icon: Iconsax.notification,
-                title: 'Notifications',
-                subtitle: 'Set any kind of notification message',
-                isDark: isDark,
-              ),
-              _buildProfileOption(
-                context,
-                icon: Iconsax.security_card,
-                title: 'Account Privacy',
-                subtitle: 'Manage data usage and connected accounts',
-                isDark: isDark,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(height: RSizes.spaceBtwItems),
+            Text('John Doe', style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold)),
+            Text('john.doe@example.com', style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: isDark ? RColors.onMutedDark : RColors.onMutedLight)),
+            const SizedBox(height: RSizes.spaceBtwSections),
+            _buildInfoCard(context, isDark, 'Personal Information', [
+              _buildInfoRow(context, isDark, Iconsax.user, 'Full Name', 'John Doe'),
+              _buildInfoRow(context, isDark, Iconsax.call, 'Phone', '+1 234 567 8900'),
+              _buildInfoRow(context, isDark, Iconsax.calendar, 'Date of Birth', 'Jan 15, 1990'),
+              _buildInfoRow(context, isDark, Iconsax.man, 'Gender', 'Male'),
+            ]),
+            const SizedBox(height: RSizes.spaceBtwItems),
+            _buildInfoCard(context, isDark, 'Contact Information', [
+              _buildInfoRow(context, isDark, Iconsax.sms, 'Email', 'john.doe@example.com'),
+              _buildInfoRow(context, isDark, Iconsax.location, 'Address', '123 Main St, New York, NY'),
+            ]),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildProfileOption(
-    BuildContext context, {
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required bool isDark,
-  }) {
+  Widget _buildInfoCard(BuildContext context, bool isDark, String title, List<Widget> children) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(RSizes.lg),
       decoration: BoxDecoration(
         color: isDark ? RColors.cardDark : RColors.cardLight,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(RSizes.cardRadiusLg),
+        border: Border.all(color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
       ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+          const SizedBox(height: RSizes.spaceBtwItems),
+          ...children,
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(BuildContext context, bool isDark, IconData icon, String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: RSizes.md),
       child: Row(
         children: [
-          Icon(
-            icon,
-            color: RColors.primaryLight,
-            size: 24,
+          Container(
+            padding: const EdgeInsets.all(RSizes.sm),
+            decoration: BoxDecoration(
+              color: RColors.primaryLight.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(RSizes.radiusSmall),
+            ),
+            child: Icon(icon, size: 20, color: RColors.primaryLight),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: RSizes.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                Text(
-                  subtitle,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
-                  ),
-                ),
+                Text(label, style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: isDark ? RColors.onMutedDark : RColors.onMutedLight)),
+                Text(value, style: Theme.of(context).textTheme.bodyLarge),
               ],
             ),
-          ),
-          Icon(
-            Iconsax.arrow_right_3,
-            color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
-            size: 16,
           ),
         ],
       ),
