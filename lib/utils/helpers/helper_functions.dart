@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class RHelperFunctions {
-  static Color? getColor(String value) {
+  static Color getColor(String value) {
     if (value == 'Green') {
       return Colors.green;
     } else if (value == 'Red') {
@@ -25,7 +25,7 @@ class RHelperFunctions {
     } else if (value == 'Grey') {
       return Colors.grey;
     }
-    return null;
+    return Colors.transparent;
   }
 
   static void showSnackBar(String message) {

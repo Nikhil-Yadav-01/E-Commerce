@@ -24,12 +24,12 @@ class RColors {
   /// Neutral foundations
   static const Color neutral = Color(0xFF1E1E1E);
   static const Color neutralVariant = Color(0xFF616161);
-  static const Color borderNeutralLight = Color(0xFFE0E6FF);
-  static const Color borderNeutralDark = Color(0xFF303854);
+  static const Color borderLight = Color(0xFFE0E6FF);
+  static const Color borderDark = Color(0xFF303854);
 
   /// Light theme surfaces
-  static const Color backgroundLight = Color(0xFFF8FAFF);
-  static const Color surfaceLight = Color(0xFFFFFFFF);
+  static const Color backgroundLight = Color(0xFFCCCCCC);
+  static const Color surfaceLight = Color(0xFFF8FAFF);
   static const Color cardLight = Color(0xFFFFFFFF);
   static const Color dividerLight = Color(0xFFE8ECFF);
   static const Color disabledLight = Color(0xFFB6C3E0);

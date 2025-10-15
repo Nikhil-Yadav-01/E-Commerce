@@ -130,11 +130,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           prefixIcon: Icon(icon, color: RColors.primaryLight),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
-            borderSide: BorderSide(color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
+            borderSide: BorderSide(color: isDark ? RColors.borderDark : RColors.borderLight),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
-            borderSide: BorderSide(color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
+            borderSide: BorderSide(color: isDark ? RColors.borderDark : RColors.borderLight),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
@@ -156,11 +156,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           prefixIcon: const Icon(Iconsax.man, color: RColors.primaryLight),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
-            borderSide: BorderSide(color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
+            borderSide: BorderSide(color: isDark ? RColors.borderDark : RColors.borderLight),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
-            borderSide: BorderSide(color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
+            borderSide: BorderSide(color: isDark ? RColors.borderDark : RColors.borderLight),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
