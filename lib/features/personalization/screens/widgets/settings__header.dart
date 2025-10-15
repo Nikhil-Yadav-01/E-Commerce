@@ -7,6 +7,7 @@ import '../../../../common/widgets/rounded_image.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/images.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../screens/profile/profile.dart';
 
 class SettingsHeader extends StatelessWidget {
   const SettingsHeader({
@@ -33,32 +34,32 @@ class SettingsHeader extends StatelessWidget {
           ),
 
           // User Profile Card
-          ListTile(
-            leading: RoundedImage(
-              imageUrl: RImages.user,
-              width: 50,
-              height: 50,
-              padding: EdgeInsets.zero,
-            ),
-            title: Text(
-              "Profile",
-              style: Theme.of(context).textTheme.headlineSmall!.apply(
-                color: isDark
-                    ? RColors.onBackgroundDark
-                    : RColors.onBackgroundLight,
+          GestureDetector(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfileScreen())),
+            child: ListTile(
+              leading: RoundedImage(
+                imageUrl: RImages.user,
+                width: 50,
+                height: 50,
+                padding: EdgeInsets.zero,
               ),
-            ),
-            subtitle: Text(
-              "john.doe@gmail.com",
-              style: Theme.of(context).textTheme.bodyMedium!.apply(
-                color: isDark
-                    ? RColors.onBackgroundDark
-                    : RColors.onBackgroundLight,
+              title: Text(
+                "Profile",
+                style: Theme.of(context).textTheme.headlineSmall!.apply(
+                  color: isDark
+                      ? RColors.onBackgroundDark
+                      : RColors.onBackgroundLight,
+                ),
               ),
-            ),
-            trailing: IconButton(
-              onPressed: () {},
-              icon: Icon(
+              subtitle: Text(
+                "john.doe@gmail.com",
+                style: Theme.of(context).textTheme.bodyMedium!.apply(
+                  color: isDark
+                      ? RColors.onBackgroundDark
+                      : RColors.onBackgroundLight,
+                ),
+              ),
+              trailing: Icon(
                 Iconsax.edit,
                 color: isDark
                     ? RColors.onBackgroundDark

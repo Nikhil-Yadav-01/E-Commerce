@@ -10,14 +10,12 @@ import 'package:flutter/material.dart';
 import '../../../../common/widgets/grid_layout_widget.dart';
 import '../../../../common/widgets/search_container.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/helpers/helper_functions.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = RHelperFunctions.isDarkMode(context);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -46,6 +44,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const SizedBox(height: RSizes.spaceBtwSections),
                 ],
               ),
             ),
