@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/helpers/helper_functions.dart';
+import '../../utils/constants/colors.dart';
+import '../../utils/constants/sizes.dart';
+import '../../utils/helpers/helper_functions.dart';
 
-class SettingsOption extends StatelessWidget {
-  const SettingsOption({super.key, required this.icon, required this.title, required this.subtitle, this.onTap});
+class RActionCard extends StatelessWidget {
+  const RActionCard({super.key, required this.icon, required this.title, required this.subtitle, this.onTap, this.isDestructive = false,});
 
   final IconData icon;
   final String title;
   final String subtitle;
   final VoidCallback? onTap;
+  final bool isDestructive;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,10 @@ class SettingsOption extends StatelessWidget {
         padding: const EdgeInsets.all(RSizes.spaceBtwItems),
         decoration: BoxDecoration(
           color: isDark ? RColors.cardDark : RColors.cardLight,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
+          border: Border.all(
+            color: isDestructive ? RColors.error : (isDark ? RColors.borderDark : RColors.borderLight),
+          ),
         ),
         child: Row(
           children: [
