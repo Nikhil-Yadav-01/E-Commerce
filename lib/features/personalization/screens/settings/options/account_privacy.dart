@@ -1,3 +1,5 @@
+import 'package:e_commerce/common/widgets/action_card.dart';
+import 'package:e_commerce/common/widgets/action_switch_card.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -33,27 +35,21 @@ class _AccountPrivacyScreenState extends State<AccountPrivacyScreen> {
           children: [
             Text('Privacy Settings', style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: RSizes.spaceBtwItems),
-            _buildSwitchTile(
-              context,
-              isDark,
+            ActionSwitchCard(
               icon: Iconsax.eye,
               title: 'Profile Visibility',
               subtitle: 'Make your profile visible to others',
               value: profileVisibility,
               onChanged: (val) => setState(() => profileVisibility = val),
             ),
-            _buildSwitchTile(
-              context,
-              isDark,
+            ActionSwitchCard(
               icon: Iconsax.activity,
               title: 'Activity Status',
               subtitle: 'Show when you\'re active',
               value: activityStatus,
               onChanged: (val) => setState(() => activityStatus = val),
             ),
-            _buildSwitchTile(
-              context,
-              isDark,
+            ActionSwitchCard(
               icon: Iconsax.share,
               title: 'Data Sharing',
               subtitle: 'Share data with partners',
@@ -61,11 +57,16 @@ class _AccountPrivacyScreenState extends State<AccountPrivacyScreen> {
               onChanged: (val) => setState(() => dataSharing = val),
             ),
             const SizedBox(height: RSizes.spaceBtwSections),
+
             Text('Security', style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: RSizes.spaceBtwItems),
-            _buildSwitchTile(
-              context,
-              isDark,
+            RActionCard(
+              icon: Iconsax.shield_tick,
+              title: 'Two-Factor Authentication',
+              subtitle: 'Add extra security to your account',
+              onTap: () {}
+            ),
+            ActionSwitchCard(
               icon: Iconsax.shield_tick,
               title: 'Two-Factor Authentication',
               subtitle: 'Add extra security to your account',
@@ -73,25 +74,19 @@ class _AccountPrivacyScreenState extends State<AccountPrivacyScreen> {
               onChanged: (val) => setState(() => twoFactorAuth = val),
             ),
             const SizedBox(height: RSizes.spaceBtwItems),
-            _buildActionCard(
-              context,
-              isDark,
+            RActionCard(
               icon: Iconsax.link,
               title: 'Connected Accounts',
               subtitle: 'Manage linked social accounts',
-              onTap: () {},
+              onTap: () {}
             ),
-            _buildActionCard(
-              context,
-              isDark,
+            RActionCard(
               icon: Iconsax.document_text,
               title: 'Download My Data',
               subtitle: 'Request a copy of your data',
-              onTap: () {},
+              onTap: () {}
             ),
-            _buildActionCard(
-              context,
-              isDark,
+            RActionCard(
               icon: Iconsax.trash,
               title: 'Delete Account',
               subtitle: 'Permanently delete your account',
@@ -120,7 +115,7 @@ class _AccountPrivacyScreenState extends State<AccountPrivacyScreen> {
         color: isDark ? RColors.cardDark : RColors.cardLight,
         borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
         border: Border.all(
-          color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight,
+          color: isDark ? RColors.borderDark : RColors.borderLight,
         ),
       ),
       child: Row(
@@ -147,47 +142,6 @@ class _AccountPrivacyScreenState extends State<AccountPrivacyScreen> {
             activeColor: RColors.primaryLight,
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildActionCard(
-    BuildContext context,
-    bool isDark, {
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required VoidCallback onTap,
-    bool isDestructive = false,
-  }) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: RSizes.spaceBtwItems),
-      decoration: BoxDecoration(
-        color: isDark ? RColors.cardDark : RColors.cardLight,
-        borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
-        border: Border.all(
-          color: isDestructive ? RColors.error : (isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
-        ),
-      ),
-      child: ListTile(
-        onTap: onTap,
-        leading: Icon(icon, color: isDestructive ? RColors.error : RColors.primaryLight),
-        title: Text(
-          title,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: isDestructive ? RColors.error : null,
-              ),
-        ),
-        subtitle: Text(
-          subtitle,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
-              ),
-        ),
-        trailing: Icon(
-          Iconsax.arrow_right_3,
-          color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
-        ),
       ),
     );
   }

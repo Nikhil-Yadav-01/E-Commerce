@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -70,6 +71,7 @@ class ProfileScreen extends StatelessWidget {
               color: isDark ? RColors.onMutedDark : RColors.onMutedLight)),
             const SizedBox(height: RSizes.spaceBtwSections),
             _buildInfoCard(context, isDark, 'Personal Information', [
+              _buildInfoRowWithCopy(context, isDark, Iconsax.card, 'User ID', 'USR-2024-001'),
               _buildInfoRow(context, isDark, Iconsax.user, 'Full Name', 'John Doe'),
               _buildInfoRow(context, isDark, Iconsax.call, 'Phone', '+1 234 567 8900'),
               _buildInfoRow(context, isDark, Iconsax.calendar, 'Date of Birth', 'Jan 15, 1990'),
@@ -92,7 +94,7 @@ class ProfileScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: isDark ? RColors.cardDark : RColors.cardLight,
         borderRadius: BorderRadius.circular(RSizes.cardRadiusLg),
-        border: Border.all(color: isDark ? RColors.borderNeutralDark : RColors.borderNeutralLight),
+        border: Border.all(color: isDark ? RColors.borderDark : RColors.borderLight),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,6 +130,44 @@ class ProfileScreen extends StatelessWidget {
                 Text(value, style: Theme.of(context).textTheme.bodyLarge),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInfoRowWithCopy(BuildContext context, bool isDark, IconData icon, String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: RSizes.md),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(RSizes.sm),
+            decoration: BoxDecoration(
+              color: RColors.primaryLight.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(RSizes.radiusSmall),
+            ),
+            child: Icon(icon, size: 20, color: RColors.primaryLight),
+          ),
+          const SizedBox(width: RSizes.md),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(label, style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: isDark ? RColors.onMutedDark : RColors.onMutedLight)),
+                Text(value, style: Theme.of(context).textTheme.bodyLarge),
+              ],
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Clipboard.setData(ClipboardData(text: value));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('$label copied to clipboard'), duration: const Duration(seconds: 1)),
+              );
+            },
+            icon: Icon(Iconsax.copy, size: 20, color: isDark ? RColors.onMutedDark : RColors.onMutedLight),
           ),
         ],
       ),
