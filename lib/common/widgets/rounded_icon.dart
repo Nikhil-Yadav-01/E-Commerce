@@ -62,7 +62,7 @@ class RRoundedIcon extends StatelessWidget {
       child: InkWell(
         onTap: onPressed,
         splashColor: (isDark ? RColors.white : RColors.primaryLight)
-            .withOpacity(0.2),
+            .withValues(alpha: 0.2),
         child: Ink(
           width: w,
           height: h,

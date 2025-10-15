@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce/utils/constants/images.dart';
 
 import '../../../../common/widgets/cart_menu_icon.dart';
 import '../../../../utils/constants/colors.dart';
@@ -36,7 +35,7 @@ class StoreScreen extends StatelessWidget {
             return <Widget>[
               SliverOverlapAbsorber(
                 // This handle must be the same one used by SliverOverlapInjector inside each tab
-                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)!,
+                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                 sliver: SliverAppBar(
                   automaticallyImplyLeading: false,
                   pinned: true, // pin TabBar so it's always visible when collapsed

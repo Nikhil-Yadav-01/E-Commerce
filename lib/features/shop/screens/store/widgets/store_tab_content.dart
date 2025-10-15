@@ -3,10 +3,8 @@ import 'package:e_commerce/common/widgets/product_card_vertical.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/heading_section.dart';
 import 'package:flutter/material.dart';
 import '../../../../../common/widgets/brand_showcase.dart';
-import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../../../utils/helpers/helper_functions.dart';
 
 class CategoryTabContent extends StatelessWidget {
   const CategoryTabContent({super.key, required this.tabKey});
@@ -15,7 +13,6 @@ class CategoryTabContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDark = RHelperFunctions.isDarkMode(context);
 
     return ListView(
       shrinkWrap: true,
