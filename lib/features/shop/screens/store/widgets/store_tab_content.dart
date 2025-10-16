@@ -2,6 +2,7 @@ import 'package:e_commerce/common/widgets/grid_layout_widget.dart';
 import 'package:e_commerce/common/widgets/product_card_vertical.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/heading_section.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../common/widgets/brand_showcase.dart';
 import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -13,7 +14,6 @@ class CategoryTabContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -22,9 +22,7 @@ class CategoryTabContent extends StatelessWidget {
           padding: EdgeInsets.all(RSizes.defaultSpace),
           child: Column(
             children: [
-              const SizedBox(
-                height: RSizes.spaceBtwSections*3,
-              ),
+              const SizedBox(height: RSizes.spaceBtwSections * 3),
               ..._getBrandTabContent(tabKey),
               SizedBox(height: RSizes.spaceBtwSections),
 
@@ -32,11 +30,14 @@ class CategoryTabContent extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  RSectionHeading(title: "You might also like", onPressed: (){},),
-                  TextButton(onPressed: (){}, child: const Text("See All")),
+                  RSectionHeading(
+                    title: "You might also like",
+                    onPressed: () {},
+                  ),
+                  TextButton(onPressed: () {}, child: const Text("See All")),
                 ],
               ),
-              const SizedBox(height: RSizes.spaceBtwItems,),
+              const SizedBox(height: RSizes.spaceBtwItems),
               GridLayoutWidget(
                 itemCount: 4,
                 itemBuilder: (context, index) => const ProductCardVertical(),
@@ -44,36 +45,9 @@ class CategoryTabContent extends StatelessWidget {
               SizedBox(height: RSizes.spaceBtwSections),
             ],
           ),
-        )
+        ),
       ],
     );
-    /*Builder(
-      builder: (BuildContext innerContext) {
-        return Container(
-          color: isDark ? RColors.backgroundDark : RColors.backgroundLight,
-          child: CustomScrollView(
-            key: PageStorageKey('StoreTabContent_$tabKey'),
-
-            // Connect inner scroll with NestedScrollView overlap
-            slivers: <Widget>[
-              SliverOverlapInjector(
-                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(innerContext),
-              ),
-
-              // Actual scrollable content
-              SliverPadding(
-                padding: const EdgeInsets.all(RSizes.defaultSpace),
-                sliver: SliverList(
-                  delegate: SliverChildListDelegate(
-                    _getBrandTabContent(tabKey),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );*/
   }
 
   /// Builds brand showcase lists per tab
@@ -85,7 +59,11 @@ class CategoryTabContent extends StatelessWidget {
             brandName: 'Nike',
             brandLogo: RImages.nikeLogo,
             productCount: '256',
-            images: [RImages.productImage7, RImages.productImage8, RImages.productImage9],
+            images: [
+              RImages.productImage7,
+              RImages.productImage8,
+              RImages.productImage9,
+            ],
           ),
           BrandShowcase(
             brandName: 'Adidas',
