@@ -8,7 +8,7 @@ import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 
-class ProductImageSlider extends StatelessWidget {
+class ProductImageSlider extends StatefulWidget {
   const ProductImageSlider({
     super.key,
     required this.images,
@@ -19,6 +19,39 @@ class ProductImageSlider extends StatelessWidget {
   final List<String> images;
   final int selectedIndex;
   final Function(int) onImageTap;
+
+  @override
+  State<ProductImageSlider> createState() => _ProductImageSliderState();
+}
+
+class _ProductImageSliderState extends State<ProductImageSlider>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _heartController;
+  late Animation<double> _heartAnimation;
+  bool _isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _heartController = AnimationController(
+      duration: const Duration(milliseconds: 150),
+      vsync: this,
+    );
+    _heartAnimation = Tween<double>(begin: 1.0, end: 1.15).animate(
+      CurvedAnimation(parent: _heartController, curve: Curves.easeOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _heartController.dispose();
+    super.dispose();
+  }
+
+  void _toggleFavorite() {
+    setState(() => _isFavorite = !_isFavorite);
+    _heartController.forward().then((_) => _heartController.reverse());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +66,7 @@ class ProductImageSlider extends StatelessWidget {
               height: 400,
               child: Center(
                 child: RoundedImage(
-                  imageUrl: images[selectedIndex],
+                  imageUrl: widget.images[widget.selectedIndex],
                   fit: BoxFit.contain,
                   width: double.infinity,
                   height: 400,
@@ -51,20 +84,20 @@ class ProductImageSlider extends StatelessWidget {
                   height: 80,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    itemCount: images.length,
+                    itemCount: widget.images.length,
                     separatorBuilder: (_, __) => const SizedBox(width: RSizes.spaceBtwItems),
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: () => onImageTap(index),
+                      onTap: () => widget.onImageTap(index),
                       child: Container(
                         width: 80,
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: selectedIndex == index ? RColors.primaryLight : (isDark ? RColors.borderDark : RColors.borderLight),
+                            color: widget.selectedIndex == index ? RColors.primaryLight : (isDark ? RColors.borderDark : RColors.borderLight),
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
                         ),
-                        child: RoundedImage(imageUrl: images[index], fit: BoxFit.cover),
+                        child: RoundedImage(imageUrl: widget.images[index], fit: BoxFit.cover),
                       ),
                     ),
                   ),
@@ -74,7 +107,17 @@ class ProductImageSlider extends StatelessWidget {
             RAppBar(
               showBackArrow: true,
               actions: [
-                IconButton(onPressed: () {}, icon: const Icon(Iconsax.heart, color: Colors.red)),
+                ScaleTransition(
+                  scale: _heartAnimation,
+                  child: IconButton(
+                    onPressed: _toggleFavorite,
+                    icon: Icon(
+                      _isFavorite ? Iconsax.heart5 : Iconsax.heart,
+                      color: _isFavorite ? Colors.red : (isDark ? Colors.white : Colors.black),
+                      size: 20,
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

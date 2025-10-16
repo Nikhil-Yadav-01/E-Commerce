@@ -3,10 +3,12 @@ import 'package:iconsax/iconsax.dart';
 
 class PromoSection extends StatefulWidget {
   final VoidCallback? onPromoApplied;
+  final bool isSmallScreen;
 
   const PromoSection({
     super.key,
     this.onPromoApplied,
+    this.isSmallScreen = false,
   });
 
   @override
@@ -53,8 +55,8 @@ class _PromoSectionState extends State<PromoSection> {
         }
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        padding: const EdgeInsets.all(20),
+        margin: EdgeInsets.symmetric(horizontal: widget.isSmallScreen ? 12 : 20),
+        padding: EdgeInsets.all(widget.isSmallScreen ? 16 : 20),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
