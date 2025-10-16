@@ -98,6 +98,61 @@ class RColors {
     end: Alignment.bottomCenter,
   );
 
+  /// Checkout screen specific gradients
+  static const LinearGradient checkoutOrderGradient = LinearGradient(
+    colors: <Color>[
+      Color(0x1A2196F3), // Blue with alpha 0.1
+      Color(0x0D9C27B0), // Purple with alpha 0.05
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient checkoutPromoGradient = LinearGradient(
+    colors: <Color>[
+      Color(0x1AFF9800), // Orange with alpha 0.1
+      Color(0x0DF44336), // Red with alpha 0.05
+    ],
+  );
+
+  static const LinearGradient checkoutPromoAppliedGradient = LinearGradient(
+    colors: <Color>[
+      Color(0x1A4CAF50), // Green with alpha 0.1
+      Color(0x0D009688), // Teal with alpha 0.05
+    ],
+  );
+
+  static const LinearGradient checkoutButtonGradient = LinearGradient(
+    colors: <Color>[
+      Color(0xFF2196F3), // Blue
+      Color(0xFF9C27B0), // Purple
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient checkoutPaymentGradient = LinearGradient(
+    colors: <Color>[
+      Color(0x1A9C27B0), // Purple with alpha 0.1
+      Color(0x0D2196F3), // Blue with alpha 0.05
+    ],
+  );
+
+  static const LinearGradient checkoutShippingGradient = LinearGradient(
+    colors: <Color>[
+      Color(0x1A009688), // Teal with alpha 0.1
+      Color(0x0D4CAF50), // Green with alpha 0.05
+    ],
+  );
+
+  /// Checkout section colors
+  static const Color checkoutOrderColor = Color(0xFF2196F3); // Blue
+  static const Color checkoutPromoColor = Color(0xFFFF9800); // Orange
+  static const Color checkoutPromoAppliedColor = Color(0xFF4CAF50); // Green
+  static const Color checkoutSummaryColor = Color(0xFF4CAF50); // Green
+  static const Color checkoutPaymentColor = Color(0xFF9C27B0); // Purple
+  static const Color checkoutShippingColor = Color(0xFF009688); // Teal
+
   /// Reusable palette collections
   static const List<Color> brandPalette = <Color>[
     Color(0xFF0057FF),
@@ -119,4 +174,14 @@ class RColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color iconLight = Color(0xFF1F1E1E); // Dark gray for light theme
   static const Color iconDark = Color(0xFFCCCCCC);  // Light gray for dark theme
+
+  /// App Bar gradient
+  static LinearGradient appBarGradient(bool isDark) => LinearGradient(
+    colors: [
+      isDark ? const Color(0xFF424242) : const Color(0xFFFFFFFF),
+      isDark ? const Color(0xFF616161) : const Color(0xFFF5F5F5),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }
