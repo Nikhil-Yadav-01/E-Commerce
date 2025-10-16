@@ -5,12 +5,14 @@ class ShippingSection extends StatelessWidget {
   final String customerName;
   final String phoneNumber;
   final VoidCallback? onChangeAddress;
+  final bool isSmallScreen;
 
   const ShippingSection({
     super.key,
     required this.customerName,
     required this.phoneNumber,
     this.onChangeAddress,
+    this.isSmallScreen = false,
   });
 
   @override
@@ -18,8 +20,8 @@ class ShippingSection extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      margin: const EdgeInsets.all(20),
-      padding: const EdgeInsets.all(20),
+      margin: EdgeInsets.all(isSmallScreen ? 12 : 20),
+      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
       decoration: BoxDecoration(
         color: isDark ? Colors.grey[850] : Colors.white,
         borderRadius: BorderRadius.circular(20),
