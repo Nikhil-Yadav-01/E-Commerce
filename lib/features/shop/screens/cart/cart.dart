@@ -105,6 +105,8 @@ class _CartScreenState extends State<CartScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
     
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF121212) : const Color(0xFFF8F9FA),
@@ -149,11 +151,12 @@ class _CartScreenState extends State<CartScreen> with TickerProviderStateMixin {
   }
 
   Widget _buildCartHeader() {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
     
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      margin: EdgeInsets.fromLTRB(isSmallScreen ? 12 : 16, 8, isSmallScreen ? 12 : 16, 8),
+      padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12 : 16, vertical: isSmallScreen ? 8 : 12),
       decoration: BoxDecoration(
         gradient: RColors.checkoutOrderGradient,
         borderRadius: BorderRadius.circular(16),
@@ -167,31 +170,31 @@ class _CartScreenState extends State<CartScreen> with TickerProviderStateMixin {
           Icon(
             Iconsax.shopping_cart,
             color: RColors.checkoutOrderColor,
-            size: 20,
+            size: isSmallScreen ? 18 : 20,
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: isSmallScreen ? 8 : 12),
           Expanded(
             child: Text(
               '${cartItems.length} items',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: isSmallScreen ? 12 : 14,
                 fontWeight: FontWeight.w600,
                 color: RColors.checkoutOrderColor,
               ),
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 8 : 10, vertical: 4),
             decoration: BoxDecoration(
               gradient: RColors.checkoutButtonGradient,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
               '\$${totalAmount.toStringAsFixed(0)}',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontSize: isSmallScreen ? 12 : 14,
               ),
             ),
           ),
@@ -215,8 +218,11 @@ class CartItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12 : 16, vertical: 8),
       itemCount: items.length,
       itemBuilder: (context, index) {
         final item = items[index];
@@ -238,14 +244,16 @@ class CheckoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
 
     return Container(
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+      padding: EdgeInsets.fromLTRB(isSmallScreen ? 12 : 16, 8, isSmallScreen ? 12 : 16, 16),
       color: isDark ? Colors.grey[900] : Colors.white,
       child: SafeArea(
         child: Container(
           width: double.infinity,
-          height: 48,
+          height: isSmallScreen ? 44 : 48,
           decoration: BoxDecoration(
             gradient: RColors.checkoutButtonGradient,
             borderRadius: BorderRadius.circular(12),
@@ -272,31 +280,31 @@ class CheckoutButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   Iconsax.shopping_cart,
                   color: Colors.white,
-                  size: 24,
+                  size: isSmallScreen ? 20 : 24,
                 ),
-                const SizedBox(width: 12),
-                const Text(
+                SizedBox(width: isSmallScreen ? 8 : 12),
+                Text(
                   'Checkout ',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: isSmallScreen ? 16 : 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 8 : 12, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     '\$${totalAmount.toStringAsFixed(1)}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16,
+                      fontSize: isSmallScreen ? 14 : 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -343,10 +351,12 @@ class CartItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(12),
+      margin: EdgeInsets.only(bottom: isSmallScreen ? 8 : 12),
+      padding: EdgeInsets.all(isSmallScreen ? 8 : 12),
       decoration: BoxDecoration(
         color: isDark ? RColors.cardDark : RColors.cardLight,
         borderRadius: BorderRadius.circular(16),
@@ -360,15 +370,16 @@ class CartItemWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ProductImage(image: item.image),
-          const SizedBox(width: 16),
+          ProductImage(image: item.image, isSmallScreen: isSmallScreen),
+          SizedBox(width: isSmallScreen ? 12 : 16),
           Expanded(
             child: ProductDetails(
               item: item,
               onQuantityChanged: onQuantityChanged,
+              isSmallScreen: isSmallScreen,
             ),
           ),
-          ProductPrice(price: item.price * item.quantity),
+          ProductPrice(price: item.price * item.quantity, isSmallScreen: isSmallScreen),
         ],
       ),
     );
@@ -377,16 +388,16 @@ class CartItemWidget extends StatelessWidget {
 
 class ProductImage extends StatelessWidget {
   final String image;
+  final bool isSmallScreen;
 
-  const ProductImage({super.key, required this.image});
+  const ProductImage({super.key, required this.image, this.isSmallScreen = false});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
+    final size = isSmallScreen ? 50.0 : 60.0;
     return Container(
-      width: 60,
-      height: 60,
+      width: size,
+      height: size,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -406,7 +417,7 @@ class ProductImage extends StatelessWidget {
       child: Center(
         child: Text(
           image,
-          style: const TextStyle(fontSize: 28),
+          style: TextStyle(fontSize: isSmallScreen ? 24 : 28),
         ),
       ),
     );
@@ -416,11 +427,13 @@ class ProductImage extends StatelessWidget {
 class ProductDetails extends StatelessWidget {
   final CartItem item;
   final Function(int) onQuantityChanged;
+  final bool isSmallScreen;
 
   const ProductDetails({
     super.key,
     required this.item,
     required this.onQuantityChanged,
+    this.isSmallScreen = false,
   });
 
   @override
@@ -433,10 +446,12 @@ class ProductDetails extends StatelessWidget {
         Text(
           item.name,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: isSmallScreen ? 14 : 16,
             fontWeight: FontWeight.w600,
             color: isDark ? Colors.white : Colors.black87,
           ),
+          overflow: TextOverflow.ellipsis,
+          maxLines: isSmallScreen ? 1 : 2,
         ),
         const SizedBox(height: 4),
         if (item.color.isNotEmpty || item.size.isNotEmpty)
@@ -477,18 +492,20 @@ class QuantityControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    
     return Row(
       children: [
         QuantityButton(
           icon: Iconsax.minus,
           onTap: () => onQuantityChanged(quantity - 1),
+          isSmallScreen: isSmallScreen,
         ),
-        const SizedBox(width: 12),
+        SizedBox(width: isSmallScreen ? 8 : 12),
         Container(
-          width: 40,
-          height: 40,
+          width: isSmallScreen ? 32 : 40,
+          height: isSmallScreen ? 32 : 40,
           decoration: BoxDecoration(
             gradient: RColors.checkoutButtonGradient,
             borderRadius: BorderRadius.circular(12),
@@ -503,18 +520,19 @@ class QuantityControls extends StatelessWidget {
           child: Center(
             child: Text(
               '$quantity',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: isSmallScreen ? 14 : 16,
               ),
             ),
           ),
         ),
-        const SizedBox(width: 12),
+        SizedBox(width: isSmallScreen ? 8 : 12),
         QuantityButton(
           icon: Iconsax.add,
           onTap: () => onQuantityChanged(quantity + 1),
+          isSmallScreen: isSmallScreen,
         ),
       ],
     );
@@ -524,22 +542,25 @@ class QuantityControls extends StatelessWidget {
 class QuantityButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
+  final bool isSmallScreen;
 
   const QuantityButton({
     super.key,
     required this.icon,
     required this.onTap,
+    this.isSmallScreen = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final size = isSmallScreen ? 28.0 : 32.0;
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 32,
-        height: 32,
+        width: size,
+        height: size,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -558,7 +579,7 @@ class QuantityButton extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          size: 18,
+          size: isSmallScreen ? 16 : 18,
           color: isDark ? Colors.white : Colors.black87,
         ),
       ),
@@ -568,23 +589,22 @@ class QuantityButton extends StatelessWidget {
 
 class ProductPrice extends StatelessWidget {
   final double price;
+  final bool isSmallScreen;
 
-  const ProductPrice({super.key, required this.price});
+  const ProductPrice({super.key, required this.price, this.isSmallScreen = false});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 8 : 12, vertical: isSmallScreen ? 6 : 8),
       decoration: BoxDecoration(
         gradient: RColors.checkoutButtonGradient,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
         '\$${price.toStringAsFixed(1)}',
-        style: const TextStyle(
-          fontSize: 16,
+        style: TextStyle(
+          fontSize: isSmallScreen ? 14 : 16,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
