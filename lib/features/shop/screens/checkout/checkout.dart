@@ -87,6 +87,8 @@ class _CheckoutScreenState extends State<CheckoutScreen>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
 
     return Scaffold(
       backgroundColor: isDark
@@ -96,7 +98,7 @@ class _CheckoutScreenState extends State<CheckoutScreen>
         title: Text(
           'Order Review',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: isSmallScreen ? 18 : 20,
             fontWeight: FontWeight.w600,
             color: isDark ? Colors.white : Colors.black87,
           ),
@@ -109,29 +111,32 @@ class _CheckoutScreenState extends State<CheckoutScreen>
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              OrderItemsSection(orderItems: orderItems),
-              const PromoSection(),
-              const OrderSummarySection(
+              OrderItemsSection(orderItems: orderItems, isSmallScreen: isSmallScreen),
+              PromoSection(isSmallScreen: isSmallScreen),
+              OrderSummarySection(
                 subtotal: 334.0,
                 shippingFee: 6.0,
                 taxFee: 40.0,
                 total: 1015.4,
+                isSmallScreen: isSmallScreen,
               ),
               PaymentSection(
                 selectedPaymentMethod: selectedPaymentMethod,
                 paymentMethodsInfo: paymentMethodsInfo,
                 onChangePayment: _showPaymentMethods,
+                isSmallScreen: isSmallScreen,
               ),
-              const ShippingSection(
+              ShippingSection(
                 customerName: 'Nikhil Yadav',
                 phoneNumber: '+92 317 8059 525',
+                isSmallScreen: isSmallScreen,
               ),
-              const SizedBox(height: RSizes.spaceBtwItems),
+              SizedBox(height: isSmallScreen ? RSizes.sm : RSizes.spaceBtwItems),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: const CheckoutButton(totalAmount: 1015.4),
+      bottomNavigationBar: CheckoutButton(totalAmount: 1015.4, isSmallScreen: isSmallScreen),
     );
   }
 }
