@@ -4,17 +4,19 @@ import 'package:e_commerce/utils/constants/colors.dart';
 
 class OrderItemsSection extends StatelessWidget {
   final List<OrderItem> orderItems;
+  final bool isSmallScreen;
 
   const OrderItemsSection({
     super.key,
     required this.orderItems,
+    this.isSmallScreen = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(20),
-      padding: const EdgeInsets.all(20),
+      margin: EdgeInsets.all(isSmallScreen ? 12 : 20),
+      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
       decoration: BoxDecoration(
         gradient: RColors.checkoutOrderGradient,
         borderRadius: BorderRadius.circular(20),
@@ -28,20 +30,20 @@ class OrderItemsSection extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Iconsax.shopping_bag, color: RColors.checkoutOrderColor, size: 24),
-              const SizedBox(width: 12),
-              const Text(
+              Icon(Iconsax.shopping_bag, color: RColors.checkoutOrderColor, size: isSmallScreen ? 20 : 24),
+              SizedBox(width: isSmallScreen ? 8 : 12),
+              Text(
                 'Order Items',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: isSmallScreen ? 16 : 18,
                   fontWeight: FontWeight.bold,
                   color: RColors.checkoutOrderColor,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
-          ...orderItems.map((item) => OrderItemCard(item: item)),
+          SizedBox(height: isSmallScreen ? 12 : 16),
+          ...orderItems.map((item) => OrderItemCard(item: item, isSmallScreen: isSmallScreen)),
         ],
       ),
     );
@@ -50,10 +52,12 @@ class OrderItemsSection extends StatelessWidget {
 
 class OrderItemCard extends StatelessWidget {
   final OrderItem item;
+  final bool isSmallScreen;
 
   const OrderItemCard({
     super.key,
     required this.item,
+    this.isSmallScreen = false,
   });
 
   @override
@@ -61,8 +65,8 @@ class OrderItemCard extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.only(bottom: isSmallScreen ? 8 : 12),
+      padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
       decoration: BoxDecoration(
         color: isDark ? Colors.grey[800] : Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -77,8 +81,8 @@ class OrderItemCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 60,
-            height: 60,
+            width: isSmallScreen ? 50 : 60,
+            height: isSmallScreen ? 50 : 60,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
@@ -125,7 +129,7 @@ class OrderItemCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: isSmallScreen ? 12 : 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,12 +137,13 @@ class OrderItemCard extends StatelessWidget {
                 Text(
                   item.name,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: isSmallScreen ? 14 : 16,
                     fontWeight: FontWeight.w600,
                     color: isDark ? Colors.white : Colors.black87,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: isSmallScreen ? 2 : 4),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
@@ -158,15 +163,18 @@ class OrderItemCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding: EdgeInsets.symmetric(
+              horizontal: isSmallScreen ? 8 : 12,
+              vertical: isSmallScreen ? 6 : 8,
+            ),
             decoration: BoxDecoration(
               gradient: RColors.checkoutButtonGradient,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               '\$${item.price.toStringAsFixed(0)}',
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: isSmallScreen ? 14 : 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
