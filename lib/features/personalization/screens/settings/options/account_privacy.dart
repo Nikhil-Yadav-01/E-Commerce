@@ -3,9 +3,7 @@ import 'package:e_commerce/common/widgets/action_switch_card.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../../../utils/helpers/helper_functions.dart';
 
 class AccountPrivacyScreen extends StatefulWidget {
   const AccountPrivacyScreen({super.key});
@@ -22,8 +20,7 @@ class _AccountPrivacyScreenState extends State<AccountPrivacyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = RHelperFunctions.isDarkMode(context);
-
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('Account Privacy'),
@@ -99,50 +96,4 @@ class _AccountPrivacyScreenState extends State<AccountPrivacyScreen> {
     );
   }
 
-  Widget _buildSwitchTile(
-    BuildContext context,
-    bool isDark, {
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required bool value,
-    required ValueChanged<bool> onChanged,
-  }) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: RSizes.spaceBtwItems),
-      padding: const EdgeInsets.all(RSizes.lg),
-      decoration: BoxDecoration(
-        color: isDark ? RColors.cardDark : RColors.cardLight,
-        borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
-        border: Border.all(
-          color: isDark ? RColors.borderDark : RColors.borderLight,
-        ),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: RColors.primaryLight, size: 24),
-          const SizedBox(width: RSizes.lg),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: Theme.of(context).textTheme.titleMedium),
-                Text(
-                  subtitle,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: isDark ? RColors.onMutedDark : RColors.onMutedLight,
-                      ),
-                ),
-              ],
-            ),
-          ),
-          Switch(
-            value: value,
-            onChanged: onChanged,
-            activeColor: RColors.primaryLight,
-          ),
-        ],
-      ),
-    );
-  }
 }
