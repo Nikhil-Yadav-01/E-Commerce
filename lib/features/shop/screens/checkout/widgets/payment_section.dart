@@ -5,12 +5,14 @@ class PaymentSection extends StatelessWidget {
   final String selectedPaymentMethod;
   final Map<String, PaymentMethodInfo> paymentMethodsInfo;
   final VoidCallback onChangePayment;
+  final bool isSmallScreen;
 
   const PaymentSection({
     super.key,
     required this.selectedPaymentMethod,
     required this.paymentMethodsInfo,
     required this.onChangePayment,
+    this.isSmallScreen = false,
   });
 
   @override
@@ -18,8 +20,8 @@ class PaymentSection extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(20),
+      margin: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12 : 20),
+      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
       decoration: BoxDecoration(
         color: isDark ? Colors.grey[850] : Colors.white,
         borderRadius: BorderRadius.circular(20),
