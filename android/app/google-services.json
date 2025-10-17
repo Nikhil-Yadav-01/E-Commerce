@@ -12,7 +12,20 @@
           "package_name": "com.rudrakha.e_commerce"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "958877651955-9sh71rqcognc2vhhqrfeqb60rlkcv46a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rudrakha.e_commerce",
+            "certificate_hash": "e0fcead9350557f1877ae8b082f1aaac70e2e293"
+          }
+        },
+        {
+          "client_id": "958877651955-p5lfp4k087gedhfptc352c2kefjs8g08.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCVZBelAyA77qrVB6u5HcvcV_aBtuguULU"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958877651955-p5lfp4k087gedhfptc352c2kefjs8g08.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "958877651955-jh130106h0i6cka2n8fdbpai7m7dn51p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rudrakha.eCommerce"
+              }
+            }
+          ]
         }
       }
     }
