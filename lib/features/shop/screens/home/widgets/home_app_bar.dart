@@ -22,20 +22,18 @@ class HomeAppBar extends StatelessWidget {
           Text(
             RTexts.homeAppbarTitle,
             style: Theme.of(context).textTheme.labelMedium?.apply(
-              color: isDark ? RColors.onSecondaryDark: RColors.onPrimaryLight,
+              color: isDark ? RColors.onSecondaryDark : RColors.onPrimaryLight,
             ),
           ),
           Text(
             name,
             style: Theme.of(context).textTheme.headlineMedium?.apply(
-              color: isDark ? RColors.onSecondaryDark: RColors.onPrimaryLight,
+              color: isDark ? RColors.onSecondaryDark : RColors.onPrimaryLight,
             ),
           ),
         ],
       ),
-      actions: [
-        RCartCounterIcon(iconColor: Color(0xFFFFFFFF))
-      ],
+      actions: [RCartCounterIcon()],
     );
   }
 }

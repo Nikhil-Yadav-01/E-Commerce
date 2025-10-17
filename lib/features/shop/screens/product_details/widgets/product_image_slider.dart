@@ -37,9 +37,10 @@ class _ProductImageSliderState extends State<ProductImageSlider>
       duration: const Duration(milliseconds: 150),
       vsync: this,
     );
-    _heartAnimation = Tween<double>(begin: 1.0, end: 1.15).animate(
-      CurvedAnimation(parent: _heartController, curve: Curves.easeOut),
-    );
+    _heartAnimation = Tween<double>(
+      begin: 1.0,
+      end: 1.15,
+    ).animate(CurvedAnimation(parent: _heartController, curve: Curves.easeOut));
   }
 
   @override
@@ -66,7 +67,7 @@ class _ProductImageSliderState extends State<ProductImageSlider>
               height: 400,
               child: Center(
                 child: RoundedImage(
-                  imageUrl: widget.images[widget.selectedIndex],
+                  imagePath: widget.images[widget.selectedIndex],
                   fit: BoxFit.contain,
                   width: double.infinity,
                   height: 400,
@@ -85,19 +86,29 @@ class _ProductImageSliderState extends State<ProductImageSlider>
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemCount: widget.images.length,
-                    separatorBuilder: (_, __) => const SizedBox(width: RSizes.spaceBtwItems),
+                    separatorBuilder: (_, __) =>
+                        const SizedBox(width: RSizes.spaceBtwItems),
                     itemBuilder: (context, index) => GestureDetector(
                       onTap: () => widget.onImageTap(index),
                       child: Container(
                         width: 80,
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: widget.selectedIndex == index ? RColors.primaryLight : (isDark ? RColors.borderDark : RColors.borderLight),
+                            color: widget.selectedIndex == index
+                                ? RColors.primaryLight
+                                : (isDark
+                                      ? RColors.borderDark
+                                      : RColors.borderLight),
                             width: 2,
                           ),
-                          borderRadius: BorderRadius.circular(RSizes.cardRadiusMd),
+                          borderRadius: BorderRadius.circular(
+                            RSizes.cardRadiusMd,
+                          ),
                         ),
-                        child: RoundedImage(imageUrl: widget.images[index], fit: BoxFit.cover),
+                        child: RoundedImage(
+                          imagePath: widget.images[index],
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -113,7 +124,9 @@ class _ProductImageSliderState extends State<ProductImageSlider>
                     onPressed: _toggleFavorite,
                     icon: Icon(
                       _isFavorite ? Iconsax.heart5 : Iconsax.heart,
-                      color: _isFavorite ? Colors.red : (isDark ? Colors.white : Colors.black),
+                      color: _isFavorite
+                          ? Colors.red
+                          : (isDark ? Colors.white : Colors.black),
                       size: 20,
                     ),
                   ),

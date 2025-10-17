@@ -10,10 +10,7 @@ import '../../../../utils/constants/sizes.dart';
 import '../../screens/profile/profile.dart';
 
 class SettingsHeader extends StatelessWidget {
-  const SettingsHeader({
-    super.key,
-    required this.isDark,
-  });
+  const SettingsHeader({super.key, required this.isDark});
 
   final bool isDark;
 
@@ -35,10 +32,13 @@ class SettingsHeader extends StatelessWidget {
 
           // User Profile Card
           GestureDetector(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfileScreen())),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ProfileScreen()),
+            ),
             child: ListTile(
               leading: RoundedImage(
-                imageUrl: RImages.user,
+                imagePath: RImages.user,
                 width: 50,
                 height: 50,
                 padding: EdgeInsets.zero,

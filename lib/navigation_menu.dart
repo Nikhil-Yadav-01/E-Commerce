@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'utils/constants/colors.dart';
-
 import 'features/shop/screens/home/home.dart';
 import 'features/shop/screens/store/store.dart';
 import 'features/shop/screens/wishlist/wishlist.dart';
+import 'utils/constants/colors.dart';
 import 'utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -25,15 +24,24 @@ class NavigationMenu extends StatelessWidget {
           height: 80,
           elevation: 0,
           selectedIndex: controller.selectedIndex.value,
-          onDestinationSelected: (index) => controller.selectedIndex.value = index,
+          onDestinationSelected: (index) =>
+              controller.selectedIndex.value = index,
           backgroundColor: isDark ? RColors.surfaceDark : RColors.surfaceLight,
-          indicatorColor: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.blue.withValues(alpha: 0.1),
+          indicatorColor: isDark
+              ? Colors.white.withValues(alpha: 0.1)
+              : Colors.blue.withValues(alpha: 0.1),
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
             NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
             NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
-            NavigationDestination(icon: Icon(Iconsax.shopping_cart), label: 'Cart'),
-            NavigationDestination(icon: Icon(Iconsax.setting), label: 'Settings'),
+            NavigationDestination(
+              icon: Icon(Iconsax.shopping_cart),
+              label: 'Cart',
+            ),
+            NavigationDestination(
+              icon: Icon(Iconsax.setting),
+              label: 'Settings',
+            ),
           ],
         ),
       ),

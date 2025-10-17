@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:e_commerce/common/widgets/cart_menu_icon.dart';
-import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/helpers/helper_functions.dart';
+import 'package:flutter/material.dart';
 
 class StoreAppBar extends StatelessWidget implements PreferredSizeWidget {
   const StoreAppBar({super.key});
@@ -63,11 +62,7 @@ class StoreAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ],
         ),
-        actions: [
-          RCartCounterIcon(
-            iconColor: isDark ? RColors.white : Colors.black,
-          ),
-        ],
+        actions: [RCartCounterIcon()],
       ),
     );
   }

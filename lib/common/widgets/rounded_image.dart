@@ -14,17 +14,19 @@ class RoundedImage extends StatelessWidget {
     this.height = 150,
     this.applyImageRadius = false,
     this.backgroundColor,
+    this.overlayColor,
     this.borderRadius = RSizes.radiusMedium,
     this.fit = BoxFit.contain,
-    required this.imageUrl,
+    required this.imagePath,
     this.isNetworkImage = false,
   });
 
   final double? width, height;
-  final String imageUrl;
+  final String imagePath;
   final bool applyImageRadius;
   final BoxBorder? border;
   final Color? backgroundColor;
+  final Color? overlayColor;
   final double borderRadius;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
@@ -42,7 +44,9 @@ class RoundedImage extends StatelessWidget {
         height: height,
         padding: padding,
         decoration: BoxDecoration(
-          color: backgroundColor ?? (isDark ? RColors.surfaceDark : RColors.surfaceLight),
+          color:
+              backgroundColor ??
+              (isDark ? RColors.surfaceDark : RColors.surfaceLight),
           border: border,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
@@ -53,8 +57,9 @@ class RoundedImage extends StatelessWidget {
           child: Image(
             fit: fit,
             image: isNetworkImage
-                ? NetworkImage(imageUrl)
-                : AssetImage(imageUrl) as ImageProvider,
+                ? NetworkImage(imagePath)
+                : AssetImage(imagePath) as ImageProvider,
+            color: overlayColor,
           ),
         ),
       ),

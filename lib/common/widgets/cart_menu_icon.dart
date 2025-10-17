@@ -1,3 +1,4 @@
+import 'package:e_commerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -5,22 +6,20 @@ import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
 
 class RCartCounterIcon extends StatelessWidget {
-  const RCartCounterIcon({
-    super.key, required this.iconColor, this.onPressed,
-  });
-
-  final Color iconColor;
+  const RCartCounterIcon({super.key, this.onPressed});
   final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = RHelperFunctions.isDarkMode(context);
+
     return Stack(
       children: [
         IconButton(
           onPressed: () {},
           icon: Icon(
             Iconsax.notification,
-            color: iconColor,
+            color: isDark ? RColors.onPrimaryDark : RColors.onPrimaryLight,
             size: RSizes.iconSizeS,
           ),
         ),
