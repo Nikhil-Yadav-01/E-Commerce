@@ -1,4 +1,5 @@
 import 'package:e_commerce/features/shop/screens/home/widgets/animated_section.dart';
+import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
@@ -42,15 +43,15 @@ class _StoreScreenState extends State<StoreScreen>
   @override
   Widget build(BuildContext context) {
     final isDark = RHelperFunctions.isDarkMode(context);
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = RHelperFunctions.screenWidth();
     final isSmallScreen = screenWidth < 400;
 
     return DefaultTabController(
       length: 5,
       child: Scaffold(
         backgroundColor: isDark
-            ? const Color(0xFF121212)
-            : const Color(0xFFF8F9FA),
+            ? RColors.backgroundDark
+            : RColors.backgroundLight,
         appBar: const StoreAppBar(),
         body: FadeTransition(
           opacity: _headerAnimation,
@@ -109,26 +110,7 @@ class _StoreScreenState extends State<StoreScreen>
                     ),
                     bottom: PreferredSize(
                       preferredSize: const Size.fromHeight(48),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: isDark
-                              ? const Color(0xFF2A2A2A)
-                              : Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: isDark
-                                  ? Colors.black.withValues(alpha: 0.2)
-                                  : Colors.grey.withValues(alpha: 0.1),
-                              blurRadius: 4,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: AnimatedSection(
-                          delay: const Duration(milliseconds: 400),
-                          child: const AnimatedTabBar(),
-                        ),
-                      ),
+                      child: TabBarContainer(isDark: isDark),
                     ),
                   ),
                 ),
@@ -145,6 +127,39 @@ class _StoreScreenState extends State<StoreScreen>
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class TabBarContainer extends StatelessWidget {
+  const TabBarContainer({
+    super.key,
+    required this.isDark,
+  });
+
+  final bool isDark;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark
+            ? const Color(0xFF2A2A2A)
+            : Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: isDark
+                ? Colors.black.withValues(alpha: 0.2)
+                : Colors.grey.withValues(alpha: 0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: AnimatedSection(
+        delay: const Duration(milliseconds: 400),
+        child: const AnimatedTabBar(),
       ),
     );
   }
