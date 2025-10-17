@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "958877651955",
+    "project_id": "flutter-project-b79af",
+    "storage_bucket": "flutter-project-b79af.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958877651955:android:d5636738dbfd6b4ce63886",
+        "android_client_info": {
+          "package_name": "com.rudrakha.e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVZBelAyA77qrVB6u5HcvcV_aBtuguULU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
