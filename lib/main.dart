@@ -11,9 +11,9 @@ Future<void> main() async {
   // Todo: Init Payment Methods
   // Todo: Await Native Splash
 
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,).then(
-      (FirebaseApp value) => Get.put(AuthenticationRepository());
-  );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then((FirebaseApp value) => Get.put(AuthenticationRepository()));
   // Todo: Initialize Authentication
   runApp(const App());
 }
