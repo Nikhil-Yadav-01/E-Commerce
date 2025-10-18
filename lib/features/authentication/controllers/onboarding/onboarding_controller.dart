@@ -2,6 +2,9 @@
 import 'package:e_commerce/features/authentication/screens/sign_in/sign_in.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../../../../utils/constants/texts.dart';
 
 class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();
@@ -13,11 +16,14 @@ class OnBoardingController extends GetxController {
 
   void dotNavigationClick(index) {
     currentPageIndex.value = index;
-  pageController.jumpToPage(index);
-}
+    pageController.jumpToPage(index);
+  }
 
   void nextPage() {
     if (currentPageIndex.value == 2) {
+      final deviceStorage = GetStorage();
+      deviceStorage.write(RTexts.firstTime, false);
+
       Get.offAll(const SignInScreen());
     } else {
       int page = currentPageIndex.value + 1;

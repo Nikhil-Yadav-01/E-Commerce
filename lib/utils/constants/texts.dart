@@ -3,6 +3,8 @@ import 'package:e_commerce/utils/constants/enums.dart';
 class RTexts {
   RTexts._();
 
+  static const String firstTime = 'IsFirstTime';
+
   /// General app copy
   static const String appName = 'ReShop E-Commerce';
   static const String tagline = 'Discover, shop, and love every moment';
