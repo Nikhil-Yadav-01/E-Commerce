@@ -125,26 +125,24 @@ class _CartScreenState extends State<CartScreen> with TickerProviderStateMixin {
         opacity: _fadeAnimation!,
         child: Column(
           children: [
-            _buildCartHeader(),
             Expanded(
               child: CartItemsList(
                 items: cartItems,
                 onQuantityChanged: updateQuantity,
               ),
             ),
-            CheckoutButton(totalAmount: totalAmount),
+            CheckoutSection(totalAmount: totalAmount, itemsCount: cartItems.length,),
           ],
         ),
       ) : Column(
           children: [
-            _buildCartHeader(),
             Expanded(
               child: CartItemsList(
                 items: cartItems,
                 onQuantityChanged: updateQuantity,
               ),
             ),
-            CheckoutButton(totalAmount: totalAmount),
+            CheckoutSection(totalAmount: totalAmount, itemsCount: cartItems.length,),
           ],
         ),
     );
@@ -204,8 +202,6 @@ class _CartScreenState extends State<CartScreen> with TickerProviderStateMixin {
   }
 }
 
-
-
 class CartItemsList extends StatelessWidget {
   final List<CartItem> items;
   final Function(String, int) onQuantityChanged;
@@ -236,10 +232,11 @@ class CartItemsList extends StatelessWidget {
   }
 }
 
-class CheckoutButton extends StatelessWidget {
+class CheckoutSection extends StatelessWidget {
   final double totalAmount;
+  final int itemsCount;
 
-  const CheckoutButton({super.key, required this.totalAmount});
+  const CheckoutSection({super.key, required this.totalAmount, required this.itemsCount});
 
   @override
   Widget build(BuildContext context) {
@@ -248,8 +245,8 @@ class CheckoutButton extends StatelessWidget {
     final isSmallScreen = screenWidth < 400;
 
     return Container(
-      padding: EdgeInsets.fromLTRB(isSmallScreen ? 12 : 16, 8, isSmallScreen ? 12 : 16, 16),
-      color: isDark ? Colors.grey[900] : Colors.white,
+      padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12 : 16, vertical: 8),
+      color: Colors.transparent,
       child: SafeArea(
         child: Container(
           width: double.infinity,
@@ -288,12 +285,20 @@ class CheckoutButton extends StatelessWidget {
                 SizedBox(width: isSmallScreen ? 8 : 12),
                 Text(
                   'Checkout ',
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.titleLarge!.apply(
                     color: Colors.white,
-                    fontSize: isSmallScreen ? 16 : 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeightDelta: 2,
                   ),
                 ),
+                SizedBox(width: isSmallScreen ? 12 : 20),
+                Text(
+                  '$itemsCount items',
+                  style: Theme.of(context).textTheme.labelLarge!.apply(
+                  color: Colors.white,
+                  fontWeightDelta: 2,
+                ),
+                ),
+                SizedBox(width: isSmallScreen ? 12 : 20),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 8 : 12, vertical: 4),
                   decoration: BoxDecoration(
